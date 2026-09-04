@@ -1,5 +1,0 @@
-{
-  "buildCommand": "npm --prefix ./client/app install && npm --prefix ./client/app run build",
-  "outputDirectory": "client/app/build",
-  "framework": "create-react-app"
-}
