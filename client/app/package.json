@@ -1,0 +1,60 @@
+{
+  "name": "client",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@emailjs/browser": "^4.4.1",
+    "@testing-library/dom": "^10.4.1",
+    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/react": "^16.3.2",
+    "@testing-library/user-event": "^13.5.0",
+    "@tsparticles/react": "^3.0.0",
+    "@tsparticles/slim": "^3.9.1",
+    "@types/jest": "^27.5.2",
+    "@types/node": "^16.18.126",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
+    "axios": "^1.13.5",
+    "framer-motion": "^12.34.2",
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4",
+    "react-icons": "^5.5.0",
+    "react-router-dom": "^7.13.0",
+    "react-scripts": "5.0.1",
+    "react-scroll": "^1.9.3",
+    "react-tsparticles": "^2.12.2",
+    "react-typed": "^2.0.12",
+    "tsparticles": "^3.9.1",
+    "typed.js": "^3.0.0",
+    "typescript": "^4.9.5",
+    "web-vitals": "^2.1.4"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "audit:pa11y:live": "npx pa11y http://localhost:59153 --reporter html --output ./pa11y-report.html",
+    "audit:pa11y:build": "npx pa11y file://$PWD/build/index.html --reporter json --output ./pa11y-build.json",
+    "audit:axe:live": "npx @axe-core/cli http://localhost:59153 --save ./axe-report.json",
+    "audit:axe:build": "npx @axe-core/cli file://$PWD/build/index.html --save ./axe-report-build.json"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}
