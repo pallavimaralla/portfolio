@@ -32,7 +32,7 @@ export const skillCategories: SkillCategory[] = [
     label: 'Cloud & DevOps',
     icon: 'FiCloud',
     color: 'cyan',
-    skills: ['AWS (S3, Route 53, Lambda, CodePipeline, CodeBuild)', 'GCP (Cloud Functions, Storage)', 'Azure', 'Docker', 'Kubernetes', 'Terraform', 'CI/CD', 'Infrastructure as Code'],
+    skills: ['AWS', 'GCP', 'Azure', 'Docker', 'Kubernetes', 'Terraform', 'CI/CD', 'Infrastructure as Code'],
   },
   {
     label: 'Databases & Messaging',
