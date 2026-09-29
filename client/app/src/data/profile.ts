@@ -14,6 +14,6 @@ export const profile: Profile = {
   phone: '+1 (551) 229-1836',
   github: 'https://github.com/pallavimaralla',
   linkedin: 'https://www.linkedin.com/in/pallavi-maralla/',
-  domain: 'pallavimaralla.dev',
+  domain: 'pallavi-maralla.vercel.app',
   location: 'New Jersey, USA',
 };

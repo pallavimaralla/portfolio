@@ -2,7 +2,7 @@
 
 Backend-focused Software Engineer owning production services across streaming, media, and research-platform domains. Experience spans Java, Node.js, and Python backend systems, AWS-to-GCP cloud migration, and end-to-end platform ownership, plus hands-on LLM integration and prompt-engineered pipelines.
 
-**Live Portfolio**: [pallavimaralla.com](https://pallavimaralla.com) | **Resume**: [PDF](./client/app/public/Pallavi_Maralla_Satish_Resume.pdf)
+**Live Portfolio**: [pallavi-maralla.vercel.app](https://pallavi-maralla.vercel.app) | **Resume**: [PDF](./client/app/public/Pallavi_Maralla_Satish_Resume.pdf)
 
 ---
 
@@ -47,6 +47,12 @@ This website showcasing my experience, projects, and skills. Built with React, F
 ## 💼 Experience
 
 ### Systems Engineering Research Center (SERC)
+**DCTC IT Analyst** | August 2026 – Present | Hoboken, NJ
+- Lead IT operations and digital transformation initiatives across DCTC programs
+- Oversee infrastructure, security, and DevOps practices supporting research initiatives
+- Architect solutions for defense-related technology challenges
+
+### Systems Engineering Research Center (SERC)
 **Full Stack Developer** | June 2025 – May 2026 | Hoboken, NJ
 - Architected internal workflow automation platform adopted by 500+ users
 - Built 6 forms, 10 views, 15 reports with Zoho Creator (beyond default no-code config)
@@ -69,7 +75,7 @@ This website showcasing my experience, projects, and skills. Built with React, F
 
 ## 🎓 Education
 
-**Master of Science in Computer Science** | Stevens Institute of Technology (Sept 2024 – May 2026)
+**Master of Science in Computer Science** | Stevens Institute of Technology (Sept 2024 – May 2026) — Completed
 - Coursework: Prompt Engineering, Applied AI / AI Technology Management, Agile Software Development, DevOps Principles
 
 **Bachelor of Engineering in Computer Science** | Dayananda Sagar College of Engineering (July 2018 – July 2022)
@@ -101,18 +107,17 @@ This website showcasing my experience, projects, and skills. Built with React, F
 portfolio/
 ├── client/app/                # React portfolio website
 │   ├── src/
-│   │   ├── components/        # Reusable UI components
-│   │   ├── config/
+│   │   ├── components/        # Reusable UI components & sections
+│   │   ├── data/              # Content data (jobs, projects, skills, etc.)
+│   │   ├── hooks/             # Custom React hooks
+│   │   ├── services/          # External service wrappers (EmailJS)
+│   │   ├── lib/               # Utilities (motion, slugify, etc.)
 │   │   ├── App.tsx
 │   │   └── index.tsx
 │   ├── public/
 │   │   └── Pallavi_Maralla_Satish_Resume.pdf
 │   ├── package.json
 │   └── tsconfig.json
-├── server/api/                # Node.js/Express API
-│   ├── index.js
-│   ├── package.json
-│   └── .env.example
 ├── README.md                  # This file
 └── SETUP.md                   # Developer setup guide
 ```
@@ -126,7 +131,7 @@ portfolio/
 - **LinkedIn:** [linkedin.com/in/pallavimaralla](https://linkedin.com/in/pallavimaralla)
 - **GitHub:** [github.com/pallavimaralla](https://github.com/pallavimaralla)
 
-**Status:** Open to opportunities | Pursuing MS in Computer Science at Stevens Institute of Technology
+**Status:** DCTC IT Analyst at SERC (Aug 2026 – Present) | MS in Computer Science from Stevens Institute of Technology (Completed)
 
 ---
 
