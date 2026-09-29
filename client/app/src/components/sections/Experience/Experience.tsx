@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { SectionHeader, Icon, Tag } from '../../ui';
+import { SectionHeader, Icon, Tag, FadeIn } from '../../ui';
 import { sections } from '../../../data/sections';
 import { jobs } from '../../../data/jobs';
 import styles from './Experience.module.css';
@@ -12,18 +12,20 @@ const Experience: React.FC = () => {
 
   return (
     <section id="experience" className={styles["experience-section"]}>
-      <div className="section-container">
-        <SectionHeader num={expSection.number} label={expSection.label} title={expSection.title}>
-          <div className={styles["exp-industry-badges"]}>
-            <Icon name="FiShield" size={13} />
-            <span className="industry-badge badge-defense">DoD · Defense &amp; National Security</span>
-            <span className="industry-badge-sep" />
-            <Icon name="FiTv" size={13} />
-            <span className="industry-badge badge-ott">OTT Streaming · 100M+ Users</span>
-          </div>
-        </SectionHeader>
+      <div className={styles["section-container"]}>
+        <FadeIn as="div" delay={0} y={20} duration={0.7}>
+          <SectionHeader num={expSection.number} label={expSection.label} title={expSection.title}>
+            <div className={styles["exp-industry-badges"]}>
+              <Icon name="FiShield" size={13} />
+              <span className="industry-badge badge-defense">DoD · Defense &amp; National Security</span>
+              <span className="industry-badge-sep" />
+              <Icon name="FiTv" size={13} />
+              <span className="industry-badge badge-ott">OTT Streaming · 100M+ Users</span>
+            </div>
+          </SectionHeader>
+        </FadeIn>
 
-        <div className={styles["timeline"]}>
+        <FadeIn as="div" className={styles["timeline"]} delay={0.15} y={20} duration={0.7}>
           {jobs.map((job, i) => (
             <motion.div
               key={job.company}
@@ -106,7 +108,7 @@ const Experience: React.FC = () => {
               </div>
             </motion.div>
           ))}
-        </div>
+        </FadeIn>
       </div>
     </section>
   );
