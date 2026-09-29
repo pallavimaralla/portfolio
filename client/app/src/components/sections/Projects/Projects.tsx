@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { SectionHeader, Icon, Tag } from '../../ui';
+import { SectionHeader, Icon, Tag, FadeIn } from '../../ui';
 import { sections } from '../../../data/sections';
 import { projects } from '../../../data/projects';
 import { staggerContainer, fadeUp } from '../../../lib/motion';
@@ -13,16 +13,19 @@ const cardVariants = fadeUp;
 
 const Projects: React.FC = () => (
   <section id="projects" className={styles["projects-section"]}>
-    <div className="section-container">
-      <SectionHeader num={projSection.number} label={projSection.label} title={projSection.title} />
+    <div className={styles["section-container"]}>
+      <FadeIn as="div" delay={0} y={20} duration={0.7}>
+        <SectionHeader num={projSection.number} label={projSection.label} title={projSection.title} />
+      </FadeIn>
 
-      <motion.div
-        className={styles["projects-grid"]}
-        variants={staggerContainer}
-        initial="hidden"
-        whileInView="show"
-        viewport={{ once: true }}
-      >
+      <FadeIn as="div" className={styles["projects-grid-wrapper"]} delay={0.15} y={20} duration={0.7}>
+        <motion.div
+          className={styles["projects-grid"]}
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true }}
+        >
         {projects.map(p => {
           const slug = slugify(p.title);
           return (
@@ -73,7 +76,8 @@ const Projects: React.FC = () => (
             </motion.div>
           );
         })}
-      </motion.div>
+        </motion.div>
+      </FadeIn>
     </div>
   </section>
 );
