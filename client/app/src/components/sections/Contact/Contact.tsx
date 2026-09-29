@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { SectionHeader, Icon } from '../../ui';
+import { SectionHeader, Icon, FadeIn } from '../../ui';
 import { profile } from '../../../data/profile';
 import { sections } from '../../../data/sections';
 import { useContactForm } from '../../../hooks';
@@ -13,10 +13,12 @@ const Contact: React.FC = () => {
 
   return (
     <section id="contact" className={styles["contact-section"]}>
-      <div className="section-container">
-        <SectionHeader num={contactSection.number} label={contactSection.label} title={contactSection.title} />
+      <div className={styles["section-container"]}>
+        <FadeIn as="div" delay={0} y={20} duration={0.7}>
+          <SectionHeader num={contactSection.number} label={contactSection.label} title={contactSection.title} />
+        </FadeIn>
 
-        <div className={styles["contact-grid"]}>
+        <FadeIn as="div" className={styles["contact-grid"]} delay={0.15} y={20} duration={0.7}>
           <motion.div
             className={styles["contact-info"]}
             initial={{ opacity: 0, x: -30 }}
@@ -152,7 +154,7 @@ const Contact: React.FC = () => {
               )}
             </button>
           </motion.form>
-        </div>
+        </FadeIn>
       </div>
     </section>
   );
