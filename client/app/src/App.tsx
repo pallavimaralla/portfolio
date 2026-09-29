@@ -10,7 +10,6 @@ import Skills from './components/sections/Skills/Skills';
 import Education from './components/sections/Education/Education';
 import Contact from './components/sections/Contact/Contact';
 import Footer from './components/Footer/Footer';
-import ParticleBackground from './components/ParticleBackground/ParticleBackground';
 import Loader from './components/Loader/Loader';
 import BackToTop from './components/BackToTop/BackToTop';
 
@@ -36,7 +35,6 @@ function App() {
 
   return (
     <div className="App">
-      <ParticleBackground />
       <Navbar />
       <main>
         <Hero />
