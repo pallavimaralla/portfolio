@@ -3,10 +3,11 @@ import styles from './GhostPill.module.css';
 
 interface GhostPillProps {
   children: React.ReactNode;
-  onClick?: () => void;
+  onClick?: (e: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement>) => void;
   href?: string;
   target?: string;
   rel?: string;
+  download?: string | boolean;
   className?: string;
   as?: 'button' | 'a';
 }
@@ -17,6 +18,7 @@ export const GhostPill: React.FC<GhostPillProps> = ({
   href,
   target,
   rel,
+  download,
   className,
   as = href ? 'a' : 'button',
 }) => {
@@ -28,6 +30,8 @@ export const GhostPill: React.FC<GhostPillProps> = ({
         href={href}
         target={target}
         rel={rel}
+        download={download}
+        onClick={onClick}
         className={combinedClassName}
       >
         {children}
