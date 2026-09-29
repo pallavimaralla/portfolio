@@ -3,7 +3,7 @@
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  padding-top: clamp(5rem, 6vw, 7rem);
+  padding-top: clamp(8rem, 10vw, 12rem);
   padding-left: clamp(1.5rem, 3vw, 2.5rem);
   padding-right: clamp(1.5rem, 3vw, 2.5rem);
   padding-bottom: clamp(4rem, 6vw, 6rem);
@@ -32,8 +32,8 @@
   padding: 0;
   position: relative;
   z-index: 2;
-  /* Font size with real rem bounds for clamp to work */
-  font-size: clamp(2.5rem, 11.5vw, 15rem);
+  /* Reduced size for clean layout without portrait overlap */
+  font-size: clamp(1.5rem, 6vw, 7rem);
 }
 
 .heading-gradient {
@@ -81,7 +81,7 @@
 /* Portrait absolutely positioned at bottom */
 .portrait-container {
   position: absolute;
-  bottom: 0;
+  bottom: -20px;
   left: 50%;
   transform: translateX(-50%);
   z-index: 1;
