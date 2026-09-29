@@ -1,142 +1,196 @@
 .projects-section {
-  padding: clamp(4rem, 8vw, 6rem) clamp(1.5rem, 4vw, 2.5rem);
+  background: #0C0C0C;
+  color: #D7E2EA;
+  padding: clamp(4rem, 8vw, 6rem) clamp(1.5rem, 4vw, 2.5rem) clamp(4rem, 8vw, 6rem);
+  border-radius: clamp(40px, 8vw, 60px) clamp(40px, 8vw, 60px) 0 0;
+  margin-top: clamp(-2rem, -6vw, -4rem);
   position: relative;
+  z-index: 50;
 }
 
 .section-container {
   max-width: 1200px;
   margin: 0 auto;
   width: 100%;
-}
-
-.projects-grid-wrapper {
-  margin-top: clamp(2rem, 4vw, 3rem);
-}
-
-.projects-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: clamp(1rem, 2.5vw, 1.5rem);
-}
-
-.project-card {
-  padding: clamp(1.25rem, 2vw, 1.5rem);
-  border-radius: 8px;
-  background: transparent;
-  border: 1px solid rgba(215, 226, 234, 0.1);
   display: flex;
   flex-direction: column;
-  gap: clamp(0.75rem, 1.5vw, 1rem);
-  cursor: default;
-  transition: border-color 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+  align-items: center;
 }
 
-.project-card:hover {
-  background: rgba(215, 226, 234, 0.02);
-  border-color: rgba(215, 226, 234, 0.2);
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+/* Giant centered heading */
+.projects-heading {
+  font-family: 'Kanit', sans-serif;
+  font-size: clamp(3rem, 12vw, 160px);
+  font-weight: 900;
+  line-height: 1.1;
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+  margin: 0 0 clamp(3rem, 6vw, 5rem) 0;
+  padding: 0;
+  text-align: center;
 }
 
-.project-card-top {
+.heading-gradient {
+  background: var(--gradient-heading);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  display: inline-block;
+}
+
+/* Cards wrapper */
+.cards-wrapper {
+  width: 100%;
+  max-width: 900px;
+  position: relative;
+}
+
+/* Individual card */
+.project-card {
+  background: transparent;
+  border: 2px solid #D7E2EA;
+  border-radius: clamp(40px, 8vw, 60px);
+  padding: clamp(2rem, 4vw, 3rem);
+  margin-bottom: clamp(2rem, 4vw, 3rem);
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: clamp(2rem, 4vw, 3rem);
+  align-items: flex-start;
+  position: relative;
+}
+
+/* Desktop: sticky stacking effect */
+@media (min-width: 769px) {
+  .project-card {
+    position: sticky;
+    top: 100px;
+    margin-bottom: clamp(1.5rem, 2vw, 2rem);
+  }
+
+  .project-card:last-child {
+    margin-bottom: 0;
+  }
+}
+
+/* Project number (huge on left) */
+.project-number {
+  font-family: 'Kanit', sans-serif;
+  font-size: clamp(3rem, 8vw, 6rem);
+  font-weight: 900;
+  line-height: 1;
+  color: rgba(215, 226, 234, 0.1);
+  flex-shrink: 0;
+  min-width: clamp(3rem, 8vw, 6rem);
+}
+
+/* Project content on right */
+.project-content {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(1rem, 2vw, 1.5rem);
+}
+
+.project-category {
+  font-family: 'Fira Code', monospace;
+  font-size: clamp(0.7rem, 1vw, 0.85rem);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: rgba(215, 226, 234, 0.6);
+}
+
+.project-header {
   display: flex;
   align-items: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
   justify-content: space-between;
-}
-
-.project-folder-icon {
-  color: #D7E2EA;
-  opacity: 0.8;
-}
-
-.project-links {
-  display: flex;
-  gap: 0.5rem;
-  align-items: center;
-}
-
-.project-link {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 36px;
-  height: 36px;
-  border-radius: 6px;
-  border: 1px solid rgba(215, 226, 234, 0.15);
-  color: rgba(215, 226, 234, 0.7);
-  transition: color 0.2s ease, border-color 0.2s ease, background 0.2s ease;
-  cursor: pointer;
-  min-width: 36px;
-  min-height: 36px;
-}
-
-.project-link:hover {
-  color: #D7E2EA;
-  border-color: rgba(215, 226, 234, 0.3);
-  background: rgba(215, 226, 234, 0.05);
-}
-
-.project-link:focus-visible {
-  outline: 2px solid #D7E2EA;
-  outline-offset: 2px;
 }
 
 .project-title {
   font-family: 'Kanit', sans-serif;
-  font-size: clamp(1rem, 1.3vw, 1.1rem);
+  font-size: clamp(1.2rem, 1.8vw, 1.5rem);
   font-weight: 600;
   color: #D7E2EA;
+  margin: 0;
+  padding: 0;
 }
 
 .project-desc {
-  color: rgba(215, 226, 234, 0.8);
   font-family: 'Kanit', sans-serif;
-  font-size: clamp(0.85rem, 1.1vw, 0.95rem);
+  font-size: clamp(0.9rem, 1.3vw, 1.1rem);
   line-height: 1.7;
-  flex: 1;
+  color: rgba(215, 226, 234, 0.8);
+  margin: 0;
+  padding: 0;
 }
 
-.project-tech {
+/* Tags */
+.project-tags {
   display: flex;
   flex-wrap: wrap;
-  gap: clamp(0.35rem, 0.75vw, 0.5rem);
-  margin-top: auto;
-  padding-top: 0.5rem;
+  gap: clamp(0.5rem, 1vw, 0.75rem);
 }
 
-/* Responsive */
-@media (max-width: 1024px) {
-  .projects-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
+.tag {
+  font-family: 'Kanit', sans-serif;
+  font-size: clamp(0.75rem, 1vw, 0.9rem);
+  font-weight: 400;
+  color: rgba(215, 226, 234, 0.7);
+  padding: 0.35rem 0.75rem;
+  border: 1px solid rgba(215, 226, 234, 0.2);
+  border-radius: 4px;
 }
 
+/* Mobile layout (normal list) */
 @media (max-width: 768px) {
   .projects-section {
-    padding: clamp(3rem, 5vw, 4rem) clamp(1.5rem, 3vw, 2rem);
+    padding: clamp(3rem, 5vw, 4rem) clamp(1.5rem, 3vw, 2rem) clamp(3rem, 5vw, 4rem);
+    margin-top: clamp(-1.5rem, -4vw, -3rem);
   }
 
-  .projects-grid {
+  .projects-heading {
+    font-size: clamp(2rem, 8vw, 3.5rem);
+    margin-bottom: clamp(2rem, 4vw, 3rem);
+  }
+
+  .project-card {
     grid-template-columns: 1fr;
+    gap: 1rem;
+    position: relative;
+    top: auto;
+    margin-bottom: clamp(2rem, 3vw, 2.5rem);
   }
 
-  .projects-grid-wrapper {
-    margin-top: clamp(1.5rem, 3vw, 2rem);
+  .project-header {
+    justify-content: flex-start;
   }
 }
 
 @media (max-width: 480px) {
   .projects-section {
     padding: clamp(2.5rem, 4vw, 3.5rem) 1.25rem;
+    border-radius: clamp(30px, 6vw, 40px) clamp(30px, 6vw, 40px) 0 0;
+  }
+
+  .projects-heading {
+    font-size: clamp(1.75rem, 6vw, 2.5rem);
   }
 
   .project-card {
-    gap: 0.75rem;
+    padding: clamp(1.5rem, 3vw, 2rem);
+    border-radius: clamp(20px, 5vw, 30px);
   }
 
-  .project-link {
-    width: 32px;
-    height: 32px;
-    min-width: 32px;
-    min-height: 32px;
+  .project-number {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    opacity: 0.3;
+    font-size: clamp(2rem, 4vw, 3rem);
+  }
+
+  .project-title {
+    font-size: clamp(1rem, 1.5vw, 1.2rem);
   }
 }
