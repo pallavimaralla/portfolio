@@ -47,7 +47,7 @@
 
 /* Individual card */
 .project-card {
-  background: transparent;
+  background: #0C0C0C;
   border: 2px solid #D7E2EA;
   border-radius: clamp(40px, 8vw, 60px);
   padding: clamp(2rem, 4vw, 3rem);
@@ -57,14 +57,14 @@
   gap: clamp(2rem, 4vw, 3rem);
   align-items: flex-start;
   position: relative;
+  overflow: hidden;
+  min-height: 200px;
 }
 
-/* Desktop: sticky stacking effect */
+/* Desktop: cards in normal flow */
 @media (min-width: 769px) {
   .project-card {
-    position: sticky;
-    top: 100px;
-    margin-bottom: clamp(1.5rem, 2vw, 2rem);
+    margin-bottom: clamp(2rem, 4vw, 3rem);
   }
 
   .project-card:last-child {
@@ -78,7 +78,7 @@
   font-size: clamp(3rem, 8vw, 6rem);
   font-weight: 900;
   line-height: 1;
-  color: rgba(215, 226, 234, 0.1);
+  color: rgba(215, 226, 234, 0.35);
   flex-shrink: 0;
   min-width: clamp(3rem, 8vw, 6rem);
 }
