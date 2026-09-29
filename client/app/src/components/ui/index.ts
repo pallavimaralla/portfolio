@@ -4,3 +4,8 @@ export { Tag, type TagColor } from './Tag';
 export { Card } from './Card';
 export { FadeIn } from './FadeIn';
 export { GradientText } from './GradientText';
+export { Magnet } from './Magnet';
+export { AnimatedText } from './AnimatedText';
+export { Marquee } from './Marquee';
+export { ContactButton } from './ContactButton';
+export { GhostPill } from './GhostPill';

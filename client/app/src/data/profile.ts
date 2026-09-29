@@ -6,6 +6,7 @@ export interface Profile {
   linkedin: string;
   domain: string;
   location: string;
+  aboutSummary: string;
 }
 
 export const profile: Profile = {
@@ -16,4 +17,5 @@ export const profile: Profile = {
   linkedin: 'https://www.linkedin.com/in/pallavi-maralla/',
   domain: 'pallavi-maralla.vercel.app',
   location: 'New Jersey, USA',
+  aboutSummary: 'Backend-focused software engineer with 3+ years owning production services across streaming, media and research platforms. At Zee Entertainment (100M+ users) I led the AWS-to-GCP migration of core APIs and scaled them to 5K req/s. At SERC I built a workflow automation platform used by 500 staff. Master\'s in Computer Science from Stevens. Let\'s build something reliable together.',
 };

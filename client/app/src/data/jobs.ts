@@ -19,12 +19,9 @@ export const jobs: Job[] = [
     location: 'Hoboken, New Jersey',
     type: 'Full-time',
     color: 'cyan',
-    bullets: [
-      'Lead IT operations and digital transformation initiatives across DCTC programs.',
-      'Oversee infrastructure, security, and DevOps practices supporting research initiatives.',
-      'Architect solutions for defense-related technology challenges.',
-    ],
-    tech: ['AWS', 'DevOps', 'Infrastructure', 'Security'],
+    // TODO: Add real bullets and tech stack for DCTC role
+    bullets: [],
+    tech: [],
   },
   {
     company: 'Systems Engineering Research Center (SERC)',

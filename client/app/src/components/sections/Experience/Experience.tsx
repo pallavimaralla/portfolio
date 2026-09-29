@@ -46,11 +46,11 @@ const Experience: React.FC = () => {
                 >
                   <div className={styles["timeline-meta"]}>
                     <div className={styles["timeline-company-row"]}>
-                      <Icon name="FiBriefcase" size={15} className={`job-icon icon-${job.color}`} />
-                      <span className={`timeline-company color-${job.color}`}>{job.company}</span>
-                      <span className={`job-type-badge badge-${job.color}`}>{job.type}</span>
+                      <Icon name="FiBriefcase" size={15} className={`${styles["job-icon"]} icon-${job.color}`} />
+                      <span className={`${styles["timeline-company"]} color-${job.color}`}>{job.company}</span>
+                      <span className={`${styles["job-type-badge"]} badge-${job.color}`}>{job.type}</span>
                     </div>
-                    <span className={`job-domain domain-${job.color}`}>{job.domain}</span>
+                    <span className={`${styles["job-domain"]} domain-${job.color}`}>{job.domain}</span>
                     <h3 className={styles["timeline-role"]}>{job.role}</h3>
                     <div className={styles["timeline-info-row"]}>
                       <span className={styles["timeline-info-item"]}>

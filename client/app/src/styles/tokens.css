@@ -1,65 +1,18 @@
 :root {
-  /* Background Colors */
-  --bg-primary: #080c18;
-  --bg-secondary: #0c1120;
-  --bg-card: #111828;
-  --bg-card-hover: #17203a;
-
-  /* Accent Colors */
-  --accent-cyan: #00d4ff;
-  --accent-purple: #7c3aed;
-  --accent-green: #34d399;
-  --accent-green-bright: #00ff88;
-  --accent-pink: #f472b6;
-
-  /* Text Colors */
-  --text-primary: #e2e8f0;
-  --text-secondary: #cbd5e1;
-  --text-muted: #94a3b8;
-
-  /* Border & Utility */
-  --border-color: #1e2d42;
-  --border-glow: rgba(64, 217, 245, 0.3);
-  --color-error: #f87171;
-  --color-slate: #64748b;
-  --color-dark-bg: #0d1117;
-  --color-dark-bg-light: #161b22;
-  --color-loader-bg: #1e293b;
-
-  /* Accent Tints (brighter variants) */
-  --accent-cyan-bright: #67e3f9;
-  --accent-purple-bright: #a78bfa;
-  --accent-green-tint: #5eead4;
-  --accent-pink-tint: #f0abcf;
-  --accent-pink-light: #fb7185;
-  --accent-pink-pale: #f9a8d4;
-
-  /* Syntax Highlighting (Dracula theme) */
-  --syntax-magenta: #ff79c6;
-  --syntax-green: #50fa7b;
-  --syntax-white: #f8f8f2;
-  --syntax-cyan: #8be9fd;
-  --syntax-yellow: #f1fa8c;
-  --syntax-purple: #bd93f9;
-  --syntax-red: #ff5f57;
-  --syntax-orange: #febc2e;
-  --syntax-green-bright: #28c840;
-  --syntax-pink: #ff006e;
-
-  /* Additional colors */
-  --color-status-green: #10b981;
-  --color-dark-text: #0f172a;
+  /* Primary Colors */
+  --bg: #0c0c0c;
+  --text-light: #d7e2ea;
+  --text-dark: #0c0c0c;
+  --surface-light: #ffffff;
 
   /* Gradients */
-  --gradient-1: linear-gradient(135deg, #00d4ff, #7c3aed);
-  --gradient-2: linear-gradient(135deg, #7c3aed, #f472b6);
-  --gradient-3: linear-gradient(135deg, #34d399, #00d4ff);
+  --gradient-heading: linear-gradient(180deg, #646973 0%, #bbccd7 100%);
+  --gradient-cta: linear-gradient(123deg, #18011f 7%, #b600a8 37%, #7621b0 72%, #be4c00 100%);
 
-  /* Text Gradients */
-  --gradient-heading: linear-gradient(180deg, #e2e8f0 0%, #94a3b8 100%);
-  --gradient-name: linear-gradient(180deg, #00d4ff 0%, #7c3aed 100%);
+  /* Utility */
+  --divider-dark: rgba(12, 12, 12, 0.15);
+  --divider-light: rgba(215, 226, 234, 0.15);
 
   /* Shadows */
-  --shadow-glow: 0 0 30px rgba(0, 212, 255, 0.12);
-  --shadow-card: 0 4px 24px rgba(0, 0, 0, 0.45);
+  --shadow-cta: 0px 4px 4px rgba(181, 1, 167, 0.25), 4px 4px 12px #7721b1;
 }

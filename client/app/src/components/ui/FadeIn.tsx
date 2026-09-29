@@ -9,6 +9,7 @@ interface FadeInProps extends Omit<MotionProps, 'initial' | 'animate' | 'exit'> 
   x?: number;
   y?: number;
   className?: string;
+  as?: React.ElementType;
 }
 
 export const FadeIn: React.FC<FadeInProps> = ({
@@ -18,20 +19,23 @@ export const FadeIn: React.FC<FadeInProps> = ({
   x = 0,
   y = 30,
   className,
+  as = 'div',
   ...motionProps
 }) => {
   const prefersReduced = usePrefersReducedMotion();
+  const MotionComponent = motion(as as any);
 
   if (prefersReduced) {
-    return <div className={className}>{children}</div>;
+    const Component = as as React.ElementType;
+    return <Component className={className}>{children}</Component>;
   }
 
   return (
-    <motion.div
+    <MotionComponent
       className={className}
       initial={{ opacity: 0, x, y }}
       whileInView={{ opacity: 1, x: 0, y: 0 }}
-      viewport={{ once: true, margin: '50px' }}
+      viewport={{ once: true, margin: '50px', amount: 0 }}
       transition={{
         delay,
         duration,
@@ -40,6 +44,6 @@ export const FadeIn: React.FC<FadeInProps> = ({
       {...motionProps}
     >
       {children}
-    </motion.div>
+    </MotionComponent>
   );
 };

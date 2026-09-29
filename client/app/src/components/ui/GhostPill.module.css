@@ -1,0 +1,41 @@
+.pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: 999px;
+  border: 2px solid var(--text-light);
+  background: transparent;
+  color: var(--text-light);
+  font-family: 'Kanit', sans-serif;
+  font-weight: 500;
+  font-size: clamp(0.875rem, 1vw, 1.125rem);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: clamp(0.75rem, 1.5vw, 1rem) clamp(2rem, 3vw, 2.5rem);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.pill:hover {
+  background: rgba(215, 226, 234, 0.1);
+  border-color: var(--text-light);
+}
+
+.pill:active {
+  transform: scale(0.98);
+}
+
+.pill:focus-visible {
+  outline: 3px solid var(--text-light);
+  outline-offset: 2px;
+}
+
+@media (max-width: 640px) {
+  .pill {
+    font-size: 0.875rem;
+    padding: 0.6rem 1.5rem;
+  }
+}

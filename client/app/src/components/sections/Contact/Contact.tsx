@@ -31,11 +31,11 @@ const Contact: React.FC = () => {
 
             <div className={styles["contact-links"]}>
               <a href={`mailto:${profile.email}`} className={styles["contact-link-item"]}>
-                <div className="contact-link-icon icon-cyan">
+                <div className={`${styles["contact-link-icon"]} icon-cyan`}>
                   <Icon name="FiMail" size={18} />
                 </div>
                 <div>
-                  <div className="contact-link-label mono">Email</div>
+                  <div className={`${styles["contact-link-label"]} mono`}>Email</div>
                   <div className={styles["contact-link-value"]}>{profile.email}</div>
                 </div>
               </a>
@@ -45,11 +45,11 @@ const Contact: React.FC = () => {
                 rel="noreferrer"
                 className={styles["contact-link-item"]}
               >
-                <div className="contact-link-icon icon-purple">
+                <div className={`${styles["contact-link-icon"]} icon-purple`}>
                   <Icon name="FiLinkedin" size={18} />
                 </div>
                 <div>
-                  <div className="contact-link-label mono">LinkedIn</div>
+                  <div className={`${styles["contact-link-label"]} mono`}>LinkedIn</div>
                   <div className={styles["contact-link-value"]}>pallavi-maralla</div>
                 </div>
               </a>
@@ -59,20 +59,20 @@ const Contact: React.FC = () => {
                 rel="noreferrer"
                 className={styles["contact-link-item"]}
               >
-                <div className="contact-link-icon icon-green">
+                <div className={`${styles["contact-link-icon"]} icon-green`}>
                   <Icon name="FiGithub" size={18} />
                 </div>
                 <div>
-                  <div className="contact-link-label mono">GitHub</div>
+                  <div className={`${styles["contact-link-label"]} mono`}>GitHub</div>
                   <div className={styles["contact-link-value"]}>pallavimaralla</div>
                 </div>
               </a>
-              <div className="contact-link-item no-hover">
-                <div className="contact-link-icon icon-pink">
+              <div className={`${styles["contact-link-item"]} no-hover`}>
+                <div className={`${styles["contact-link-icon"]} icon-pink`}>
                   <Icon name="FiMapPin" size={18} />
                 </div>
                 <div>
-                  <div className="contact-link-label mono">Location</div>
+                  <div className={`${styles["contact-link-label"]} mono`}>Location</div>
                   <div className={styles["contact-link-value"]}>{profile.location} · Open to Relocation</div>
                 </div>
               </div>
@@ -89,7 +89,7 @@ const Contact: React.FC = () => {
           >
             <div className={styles["form-row"]}>
               <div className={styles["form-group"]}>
-                <label htmlFor="contact-name" className="form-label mono">Name</label>
+                <label htmlFor="contact-name" className={`${styles["form-label"]} mono`}>Name</label>
                 <input
                   id="contact-name"
                   name="name"
@@ -103,7 +103,7 @@ const Contact: React.FC = () => {
                 />
               </div>
               <div className={styles["form-group"]}>
-                <label htmlFor="contact-email" className="form-label mono">Email</label>
+                <label htmlFor="contact-email" className={`${styles["form-label"]} mono`}>Email</label>
                 <input
                   id="contact-email"
                   name="email"
@@ -118,12 +118,12 @@ const Contact: React.FC = () => {
               </div>
             </div>
             <div className={styles["form-group"]}>
-              <label htmlFor="contact-message" className="form-label mono">Message</label>
+              <label htmlFor="contact-message" className={`${styles["form-label"]} mono`}>Message</label>
               <textarea
                 id="contact-message"
                 name="message"
                 placeholder="Tell me about the opportunity or project..."
-                className="form-input form-textarea"
+                className={`${styles["form-input"]} ${styles["form-textarea"]}`}
                 value={form.message}
                 onChange={handleChange}
                 rows={5}
