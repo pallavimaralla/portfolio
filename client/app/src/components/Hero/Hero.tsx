@@ -50,15 +50,6 @@ const Hero: React.FC = () => {
           />
         </Magnet>
       </div>
-
-      {/* Scroll down button */}
-      <button
-        className={styles['scroll-down-btn']}
-        onClick={() => document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' })}
-        aria-label="Scroll to about"
-      >
-        <Icon name="FiArrowDown" size={20} />
-      </button>
     </section>
   );
 };
