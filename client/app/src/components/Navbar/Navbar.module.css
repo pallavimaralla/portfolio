@@ -46,7 +46,7 @@
   align-items: center;
   gap: clamp(1rem, 2vw, 2rem);
   flex: 1;
-  margin: 0 clamp(2rem, 4vw, 3rem);
+  justify-content: space-between;
 }
 
 @media (min-width: 768px) {
@@ -141,6 +141,29 @@
 }
 
 .mobileLink:focus-visible {
+  outline: 2px solid var(--text-light);
+  outline-offset: 3px;
+}
+
+.mobileLogoLink {
+  font-family: 'Kanit', sans-serif;
+  font-size: clamp(1rem, 1.5vw, 1.25rem);
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-light);
+  text-decoration: none;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+  padding: 0.75rem 0;
+  display: block;
+}
+
+.mobileLogoLink:hover {
+  opacity: 0.7;
+}
+
+.mobileLogoLink:focus-visible {
   outline: 2px solid var(--text-light);
   outline-offset: 3px;
 }

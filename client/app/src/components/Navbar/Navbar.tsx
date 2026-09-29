@@ -44,22 +44,13 @@ const Navbar: React.FC = () => {
   return (
     <FadeIn as="nav" className={styles.navbar} delay={0} y={-20} duration={0.7}>
       <div className={styles.container}>
-        {/* Logo */}
-        <a
-          href="#hero"
-          className={styles.logo}
-          onClick={() => handleNavClick('#hero')}
-        >
-          PM
-        </a>
-
-        {/* Desktop Links */}
+        {/* Desktop Links - spread full width */}
         <div className={styles.links}>
           {navLinks.map((link) => (
             <a
               key={link.label}
               href={link.href}
-              className={styles.link}
+              className={link.label === 'PM' ? styles.logo : styles.link}
               onClick={(e) => {
                 e.preventDefault();
                 handleNavClick(link.href);
@@ -72,12 +63,14 @@ const Navbar: React.FC = () => {
 
         {/* Mobile Hamburger */}
         <button
+          ref={hamburgerRef}
           className={styles.hamburger}
           aria-label={menuOpen ? 'Close menu' : 'Open menu'}
           aria-expanded={menuOpen}
+          aria-controls="mobile-menu"
           onClick={() => setMenuOpen(!menuOpen)}
         >
-          <Icon name={menuOpen ? 'FiX' : 'FiMenu'} size={24} />
+          <Icon name={menuOpen ? 'FiX' : 'FiMenu'} size={24} aria-hidden="true" />
         </button>
       </div>
 
@@ -85,6 +78,7 @@ const Navbar: React.FC = () => {
       <AnimatePresence>
         {menuOpen && (
           <motion.div
+            id="mobile-menu"
             className={styles.mobileMenu}
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
@@ -95,10 +89,11 @@ const Navbar: React.FC = () => {
               <motion.a
                 key={link.label}
                 href={link.href}
-                className={styles.mobileLink}
+                className={link.label === 'PM' ? styles.mobileLogoLink : styles.mobileLink}
                 onClick={(e) => {
                   e.preventDefault();
                   handleNavClick(link.href);
+                  closedMenu();
                 }}
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
