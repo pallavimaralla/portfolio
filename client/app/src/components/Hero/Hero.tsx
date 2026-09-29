@@ -93,13 +93,13 @@ const Hero: React.FC = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.5, ease: [0.25, 0.1, 0.25, 1] }}
           >
-            <button className={styles["btn-primary"]} onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}>
+            <button className="btn-primary" onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}>
               <Icon name="FiMail" style={{ marginRight: '0.5rem' }} />
               Get In Touch
             </button>
             <a
               href="/Pallavi_Maralla_Satish_Resume.pdf"
-              className={styles["btn-outline"]}
+              className="btn-outline"
               download
               style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}
             >

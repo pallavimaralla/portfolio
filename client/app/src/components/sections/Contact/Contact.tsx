@@ -13,7 +13,7 @@ const Contact: React.FC = () => {
 
   return (
     <section id="contact" className={styles["contact-section"]}>
-      <div className={styles["section-container"]}>
+      <div className="section-container">
         <SectionHeader num={contactSection.number} label={contactSection.label} title={contactSection.title} />
 
         <div className={styles["contact-grid"]}>

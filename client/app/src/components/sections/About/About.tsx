@@ -13,7 +13,7 @@ const aboutSection = sections.find(s => s.id === 'about')!;
 const About: React.FC = () => {
   return (
     <section id="about" className={styles["about-section"]}>
-      <div className={styles["section-container"]}>
+      <div className="section-container">
         <SectionHeader num={aboutSection.number} label={aboutSection.label} title={aboutSection.title} />
 
         <div className={styles["about-grid"]}>

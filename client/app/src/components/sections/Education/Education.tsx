@@ -9,7 +9,7 @@ const eduSection = sections.find(s => s.id === 'education')!;
 
 const Education: React.FC = () => (
   <section id="education" className={styles["education-section"]}>
-    <div className={styles["section-container"]}>
+    <div className="section-container">
       <SectionHeader num={eduSection.number} label={eduSection.label} title={eduSection.title} />
 
       <div className={styles["edu-list"]}>

@@ -12,12 +12,12 @@ const Experience: React.FC = () => {
 
   return (
     <section id="experience" className={styles["experience-section"]}>
-      <div className={styles["section-container"]}>
+      <div className="section-container">
         <SectionHeader num={expSection.number} label={expSection.label} title={expSection.title}>
           <div className={styles["exp-industry-badges"]}>
             <Icon name="FiShield" size={13} />
             <span className="industry-badge badge-defense">DoD · Defense &amp; National Security</span>
-            <span className={styles["industry-badge-sep"]} />
+            <span className="industry-badge-sep" />
             <Icon name="FiTv" size={13} />
             <span className="industry-badge badge-ott">OTT Streaming · 100M+ Users</span>
           </div>
@@ -38,7 +38,7 @@ const Experience: React.FC = () => {
                 {i < jobs.length - 1 && <div className={styles["timeline-line"]} />}
               </div>
 
-              <div className="timeline-card gradient-border">
+              <div className={`${styles["timeline-card"]} timeline-card gradient-border`}>
                 <button
                   className={styles["timeline-header"]}
                   onClick={() => setExpanded(prev => { const s = new Set(prev); s.has(i) ? s.delete(i) : s.add(i); return s; })}

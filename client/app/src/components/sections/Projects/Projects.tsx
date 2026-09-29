@@ -13,7 +13,7 @@ const cardVariants = fadeUp;
 
 const Projects: React.FC = () => (
   <section id="projects" className={styles["projects-section"]}>
-    <div className={styles["section-container"]}>
+    <div className="section-container">
       <SectionHeader num={projSection.number} label={projSection.label} title={projSection.title} />
 
       <motion.div

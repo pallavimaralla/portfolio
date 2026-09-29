@@ -15,7 +15,7 @@ const skillSection = sections.find(s => s.id === 'skills')!;
 
 const Skills: React.FC = () => (
   <section id="skills" className={styles["skills-section"]}>
-    <div className={styles["section-container"]}>
+    <div className="section-container">
       <SectionHeader num={skillSection.number} label={skillSection.label} title={skillSection.title} />
 
       <motion.div
