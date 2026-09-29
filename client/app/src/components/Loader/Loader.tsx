@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import './Loader.css';
+import styles from './Loader.module.css';
 
 const Loader: React.FC = () => {
   const [progress, setProgress] = useState(0);
@@ -34,21 +34,21 @@ const Loader: React.FC = () => {
   }, []);
 
   return (
-    <div className="loader-container">
-      <div className="loader-content">
-        <div className="loader-logo">
-          <span className="loader-bracket">&lt;</span>
-          <span className="loader-name">PM</span>
-          <span className="loader-bracket">/&gt;</span>
+    <div className={styles["loader-container"]}>
+      <div className={styles["loader-content"]}>
+        <div className={styles["loader-logo"]}>
+          <span className={styles["loader-bracket"]}>&lt;</span>
+          <span className={styles["loader-name"]}>PM</span>
+          <span className={styles["loader-bracket"]}>/&gt;</span>
         </div>
-        <div className="loader-text mono">{text}<span className="cursor">_</span></div>
-        <div className="loader-bar-container">
-          <div className="loader-bar" style={{ width: `${progress}%` }}></div>
+        <div className="loader-text mono">{text}<span className={styles["cursor"]}>_</span></div>
+        <div className={styles["loader-bar-container"]}>
+          <div className={styles["loader-bar"]} style={{ width: `${progress}%` }}></div>
         </div>
         <div className="loader-percent mono">{progress}%</div>
-        <div className="loader-grid">
+        <div className={styles["loader-grid"]}>
           {Array.from({ length: 16 }).map((_, i) => (
-            <div key={i} className="loader-grid-cell" style={{ animationDelay: `${i * 0.1}s` }}></div>
+            <div key={i} className={styles["loader-grid-cell"]} style={{ animationDelay: `${i * 0.1}s` }}></div>
           ))}
         </div>
       </div>

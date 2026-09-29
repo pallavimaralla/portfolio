@@ -133,7 +133,7 @@
 }
 
 .form-error {
-  color: #f87171;
+  color: var(--color-error);
   font-size: 0.82rem;
   margin: 0 0 0.5rem;
 }

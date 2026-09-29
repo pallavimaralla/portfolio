@@ -28,7 +28,7 @@
 .back-to-top:hover {
   background: var(--bg-card-hover);
   border-color: var(--accent-cyan);
-  box-shadow: 0 0 12px rgba(64, 217, 245, 0.2);
+  box-shadow: 0 0 12px rgba(0, 212, 255, 0.2);
 }
 
 @media (max-width: 768px) {

@@ -4,7 +4,7 @@ import { Icon } from '../ui';
 import { profile } from '../../data/profile';
 import { sections } from '../../data/sections';
 import { useActiveSection } from '../../hooks';
-import './Navbar.css';
+import styles from './Navbar.module.css';
 
 const navLinks = sections.map(s => ({ label: s.label, href: `#${s.id}` }));
 
@@ -36,14 +36,14 @@ const Navbar: React.FC = () => {
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.6, ease: 'easeOut' }}
     >
-      <div className="navbar-inner">
-        <a className="navbar-logo" href="#hero" onClick={() => handleNavClick('#hero')}>
-          <span className="logo-bracket">&lt;</span>
-          <span className="logo-text">PM</span>
-          <span className="logo-bracket">/&gt;</span>
+      <div className={styles["navbar-inner"]}>
+        <a className={styles["navbar-logo"]} href="#hero" onClick={() => handleNavClick('#hero')}>
+          <span className={styles["logo-bracket"]}>&lt;</span>
+          <span className={styles["logo-text"]}>PM</span>
+          <span className={styles["logo-bracket"]}>/&gt;</span>
         </a>
 
-        <div className="navbar-links">
+        <div className={styles["navbar-links"]}>
           {navLinks.map((link, i) => (
             <motion.button
               key={link.label}
@@ -57,11 +57,11 @@ const Navbar: React.FC = () => {
               {link.label}
             </motion.button>
           ))}
-          <div className="navbar-socials">
-            <a href={profile.github} target="_blank" rel="noreferrer" className="social-icon">
+          <div className={styles["navbar-socials"]}>
+            <a href={profile.github} target="_blank" rel="noreferrer" className={styles["social-icon"]}>
               <Icon name="FiGithub" />
             </a>
-            <a href={profile.linkedin} target="_blank" rel="noreferrer" className="social-icon">
+            <a href={profile.linkedin} target="_blank" rel="noreferrer" className={styles["social-icon"]}>
               <Icon name="FiLinkedin" />
             </a>
           </div>
@@ -69,7 +69,7 @@ const Navbar: React.FC = () => {
 
         <button
           id="navbar-hamburger"
-          className="hamburger"
+          className={styles["hamburger"]}
           aria-controls="mobile-menu"
           aria-expanded={menuOpen}
           aria-label={menuOpen ? 'Close navigation menu' : 'Open navigation menu'}
@@ -85,7 +85,7 @@ const Navbar: React.FC = () => {
             id="mobile-menu"
             role="menu"
             aria-hidden={!menuOpen}
-            className="mobile-menu"
+            className={styles["mobile-menu"]}
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
@@ -94,7 +94,7 @@ const Navbar: React.FC = () => {
             {navLinks.map((link, i) => (
               <motion.button
                 key={link.label}
-                className="mobile-nav-link"
+                className={styles["mobile-nav-link"]}
                 onClick={() => handleNavClick(link.href)}
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
@@ -104,11 +104,11 @@ const Navbar: React.FC = () => {
                 {link.label}
               </motion.button>
             ))}
-            <div className="mobile-socials">
-              <a href={profile.github} target="_blank" rel="noreferrer" className="social-icon">
+            <div className={styles["mobile-socials"]}>
+              <a href={profile.github} target="_blank" rel="noreferrer" className={styles["social-icon"]}>
                 <Icon name="FiGithub" size={20} />
               </a>
-              <a href={profile.linkedin} target="_blank" rel="noreferrer" className="social-icon">
+              <a href={profile.linkedin} target="_blank" rel="noreferrer" className={styles["social-icon"]}>
                 <Icon name="FiLinkedin" size={20} />
               </a>
             </div>

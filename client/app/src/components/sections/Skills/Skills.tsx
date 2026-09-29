@@ -4,7 +4,7 @@ import { SectionHeader, Icon, Tag } from '../../ui';
 import { sections } from '../../../data/sections';
 import { skillCategories } from '../../../data/skills';
 import { staggerContainerSmall } from '../../../lib/motion';
-import './Skills.css';
+import styles from './Skills.module.css';
 
 const cardVariants = {
   hidden: { opacity: 0, y: 24 },
@@ -14,12 +14,12 @@ const cardVariants = {
 const skillSection = sections.find(s => s.id === 'skills')!;
 
 const Skills: React.FC = () => (
-  <section id="skills" className="skills-section">
-    <div className="section-container">
+  <section id="skills" className={styles["skills-section"]}>
+    <div className={styles["section-container"]}>
       <SectionHeader num={skillSection.number} label={skillSection.label} title={skillSection.title} />
 
       <motion.div
-        className="skills-grid"
+        className={styles["skills-grid"]}
         variants={staggerContainerSmall}
         initial="hidden"
         whileInView="show"
@@ -36,7 +36,7 @@ const Skills: React.FC = () => (
               <Icon name={cat.icon} size={18} />
               <span className="skill-category-label mono">{cat.label}</span>
             </div>
-            <div className="skill-tags">
+            <div className={styles["skill-tags"]}>
               {cat.skills.map(s => (
                 <Tag key={s} color={cat.color}>{s}</Tag>
               ))}

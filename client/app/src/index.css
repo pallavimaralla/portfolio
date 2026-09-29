@@ -1,25 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700;800;900&display=swap');
-
-:root {
-  --bg-primary: #080c18;
-  --bg-secondary: #0c1120;
-  --bg-card: #111828;
-  --bg-card-hover: #17203a;
-  --accent-cyan: #40d9f5;
-  --accent-purple: #a78bfa;
-  --accent-green: #34d399;
-  --accent-pink: #f472b6;
-  --text-primary: #f0f4f8;
-  --text-secondary: #b8c8da;
-  --text-muted: #8899b0;
-  --border-color: #1e2d42;
-  --border-glow: rgba(64, 217, 245, 0.3);
-  --gradient-1: linear-gradient(135deg, #40d9f5, #a78bfa);
-  --gradient-2: linear-gradient(135deg, #a78bfa, #f472b6);
-  --gradient-3: linear-gradient(135deg, #34d399, #40d9f5);
-  --shadow-glow: 0 0 30px rgba(64, 217, 245, 0.12);
-  --shadow-card: 0 4px 24px rgba(0, 0, 0, 0.45);
-}
+@import './styles/tokens.css';
 
 * {
   margin: 0;
@@ -62,19 +42,9 @@ code, .mono {
 }
 
 .section-container {
-  max-width: 1200px;
+  max-width: 1100px;
   margin: 0 auto;
   padding: 0 2rem;
-}
-
-.section-title {
-  font-size: 2.5rem;
-  font-weight: 800;
-  margin-bottom: 1rem;
-  background: var(--gradient-1);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
 }
 
 .section-subtitle {
@@ -85,60 +55,6 @@ code, .mono {
 
 .glow-text {
   text-shadow: 0 0 20px rgba(0, 212, 255, 0.5);
-}
-
-.gradient-border {
-  position: relative;
-  border-radius: 12px;
-}
-
-.gradient-border::before {
-  content: '';
-  position: absolute;
-  inset: -1px;
-  border-radius: 13px;
-  background: var(--gradient-1);
-  z-index: -1;
-  opacity: 0;
-  transition: opacity 0.35s ease;
-}
-
-.gradient-border:hover::before {
-  opacity: 0.55;
-}
-
-.tag {
-  display: inline-block;
-  padding: 0.25rem 0.75rem;
-  border-radius: 20px;
-  font-size: 0.75rem;
-  font-weight: 600;
-  font-family: 'Fira Code', monospace;
-  letter-spacing: 0.05em;
-}
-
-.tag-cyan {
-  background: rgba(64, 217, 245, 0.1);
-  color: #67e3f9;
-  border: 1px solid rgba(64, 217, 245, 0.28);
-}
-
-.tag-purple {
-  background: rgba(167, 139, 250, 0.1);
-  color: #b8a5fb;
-  border: 1px solid rgba(167, 139, 250, 0.28);
-}
-
-.tag-green {
-  background: rgba(52, 211, 153, 0.1);
-  color: #5eead4;
-  border: 1px solid rgba(52, 211, 153, 0.28);
-}
-
-.tag-pink {
-  background: rgba(244, 114, 182, 0.1);
-  color: #f0abcf;
-  border: 1px solid rgba(244, 114, 182, 0.28);
 }
 
 section {

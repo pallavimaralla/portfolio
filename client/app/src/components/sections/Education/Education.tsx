@@ -3,16 +3,16 @@ import { motion } from 'framer-motion';
 import { SectionHeader, Icon, Tag } from '../../ui';
 import { sections } from '../../../data/sections';
 import { degrees } from '../../../data/education';
-import './Education.css';
+import styles from './Education.module.css';
 
 const eduSection = sections.find(s => s.id === 'education')!;
 
 const Education: React.FC = () => (
-  <section id="education" className="education-section">
-    <div className="section-container">
+  <section id="education" className={styles["education-section"]}>
+    <div className={styles["section-container"]}>
       <SectionHeader num={eduSection.number} label={eduSection.label} title={eduSection.title} />
 
-      <div className="edu-list">
+      <div className={styles["edu-list"]}>
         {degrees.map((d, i) => (
           <motion.div
             key={d.degree}
@@ -23,19 +23,19 @@ const Education: React.FC = () => (
             transition={{ duration: 0.5, delay: i * 0.15 }}
             whileHover={{ y: -3, transition: { duration: 0.2 } }}
           >
-            <div className="edu-card-top">
-              <div className="edu-icon-wrap">
-                <Icon name="FiAward" size={26} className="edu-award-icon" />
+            <div className={styles["edu-card-top"]}>
+              <div className={styles["edu-icon-wrap"]}>
+                <Icon name="FiAward" size={26} className={styles["edu-award-icon"]} />
               </div>
-              <div className="edu-main">
-                <div className="edu-degree">{d.degree}</div>
-                <div className="edu-school">{d.school}</div>
-                <div className="edu-meta-row">
-                  <span className="edu-meta-item">
+              <div className={styles["edu-main"]}>
+                <div className={styles["edu-degree"]}>{d.degree}</div>
+                <div className={styles["edu-school"]}>{d.school}</div>
+                <div className={styles["edu-meta-row"]}>
+                  <span className={styles["edu-meta-item"]}>
                     <Icon name="FiCalendar" size={12} />
                     {d.period}
                   </span>
-                  <span className="edu-meta-item">
+                  <span className={styles["edu-meta-item"]}>
                     <Icon name="FiMapPin" size={12} />
                     {d.location}
                   </span>
@@ -46,13 +46,13 @@ const Education: React.FC = () => (
 
             {d.courses && (
               <>
-                <div className="edu-divider" />
-                <div className="edu-courses-section">
+                <div className={styles["edu-divider"]} />
+                <div className={styles["edu-courses-section"]}>
                   <div className="edu-courses-label mono">
                     <Icon name="FiBook" size={13} />
                     Relevant Coursework
                   </div>
-                  <div className="edu-courses-grid">
+                  <div className={styles["edu-courses-grid"]}>
                     {d.courses.map(c => (
                       <Tag key={c} color="purple">{c}</Tag>
                     ))}

@@ -24,7 +24,7 @@
 }
 
 .hero-greeting {
-  color: #00d4ff;
+  color: var(--accent-cyan);
   font-size: 1rem;
   letter-spacing: 0.1em;
   display: flex;
@@ -33,7 +33,7 @@
 }
 
 .greeting-bracket {
-  color: #7c3aed;
+  color: var(--accent-purple);
   font-size: 1.1rem;
 }
 
@@ -41,12 +41,12 @@
   font-size: clamp(2.8rem, 5vw, 4.5rem);
   font-weight: 900;
   line-height: 1.05;
-  color: #e2e8f0;
+  color: var(--text-primary);
   letter-spacing: -0.02em;
 }
 
 .hero-name-last {
-  background: linear-gradient(135deg, #00d4ff, #7c3aed);
+  background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -61,37 +61,37 @@
 }
 
 .role-prefix {
-  color: #64748b;
+  color: var(--color-slate);
   font-size: 0.95rem;
 }
 
 .role-quote {
-  color: #00ff88;
+  color: var(--accent-green-bright);
   font-size: 0.95rem;
 }
 
 .role-text {
-  color: #00ff88;
+  color: var(--accent-green-bright);
   font-size: 1rem;
   font-weight: 600;
   min-width: 180px;
 }
 
 .role-cursor {
-  color: #00d4ff;
+  color: var(--accent-cyan);
   animation: blink 1s step-end infinite;
   font-weight: 300;
 }
 
 .hero-summary {
-  color: #94a3b8;
+  color: var(--text-muted);
   font-size: 1rem;
   line-height: 1.75;
   max-width: 520px;
 }
 
 .highlight {
-  color: #00d4ff;
+  color: var(--accent-cyan);
   font-weight: 600;
 }
 
@@ -116,7 +116,7 @@
 .stat-value {
   font-size: 1.4rem;
   font-weight: 800;
-  background: linear-gradient(135deg, #00d4ff, #7c3aed);
+  background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -125,7 +125,7 @@
 
 .stat-label {
   font-size: 0.7rem;
-  color: #64748b;
+  color: var(--color-slate);
   text-transform: uppercase;
   letter-spacing: 0.08em;
   white-space: nowrap;
@@ -151,7 +151,7 @@
 }
 
 .hero-social-link {
-  color: #64748b;
+  color: var(--color-slate);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -163,7 +163,7 @@
 }
 
 .hero-social-link:hover {
-  color: #00d4ff;
+  color: var(--accent-cyan);
   border-color: rgba(0, 212, 255, 0.4);
   background: rgba(0, 212, 255, 0.08);
   transform: translateY(-2px);
@@ -187,7 +187,7 @@
 
 .code-window {
   width: 100%;
-  background: #0d1117;
+  background: var(--color-dark-bg);
   border: 1px solid rgba(0, 212, 255, 0.2);
   border-radius: 12px;
   overflow: hidden;
@@ -199,7 +199,7 @@
   align-items: center;
   gap: 0.5rem;
   padding: 0.75rem 1rem;
-  background: #161b22;
+  background: var(--color-dark-bg-light);
   border-bottom: 1px solid rgba(255, 255, 255, 0.06);
 }
 
@@ -209,13 +209,13 @@
   border-radius: 50%;
 }
 
-.dot-red { background: #ff5f57; }
-.dot-yellow { background: #febc2e; }
-.dot-green { background: #28c840; }
+.dot-red { background: var(--syntax-red); }
+.dot-yellow { background: var(--syntax-orange); }
+.dot-green { background: var(--syntax-green-bright); }
 
 .window-title {
   margin-left: 0.5rem;
-  color: #64748b;
+  color: var(--color-slate);
   font-size: 0.8rem;
 }
 
@@ -230,13 +230,13 @@
   white-space: pre;
 }
 
-.code-keyword { color: #ff79c6; }
-.code-var { color: #50fa7b; }
-.code-op { color: #ff79c6; }
-.code-bracket { color: #f8f8f2; }
-.code-key { color: #8be9fd; }
-.code-string { color: #f1fa8c; }
-.code-bool { color: #bd93f9; }
+.code-keyword { color: var(--syntax-magenta); }
+.code-var { color: var(--syntax-green); }
+.code-op { color: var(--syntax-magenta); }
+.code-bracket { color: var(--syntax-white); }
+.code-key { color: var(--syntax-cyan); }
+.code-string { color: var(--syntax-yellow); }
+.code-bool { color: var(--syntax-purple); }
 
 /* Floating Badges */
 .floating-badges {
@@ -253,7 +253,7 @@
   border-radius: 8px;
   font-size: 0.8rem;
   font-weight: 600;
-  color: #e2e8f0;
+  color: var(--text-primary);
   text-align: center;
   backdrop-filter: blur(10px);
   cursor: default;
@@ -269,7 +269,7 @@
 .badge-redis    { border-color: rgba(220, 56,  56,  0.45); }
 .badge-git      { border-color: rgba(240, 100, 40,  0.45); }
 .badge-cicd     { border-color: rgba(64,  217, 245, 0.40); }
-.badge-kotlin   { border-color: rgba(167, 139, 250, 0.45); }
+.badge-kotlin   { border-color: rgba(124, 58, 237, 0.45); }
 .badge-firebase { border-color: rgba(255, 167, 38,  0.45); }
 .badge-gcp      { border-color: rgba(66,  133, 244, 0.45); }
 .badge-aws      { border-color: rgba(255, 153, 0,   0.45); }
@@ -290,7 +290,7 @@
   transform: translateX(-50%);
   background: rgba(0, 212, 255, 0.1);
   border: 1px solid rgba(0, 212, 255, 0.3);
-  color: #00d4ff;
+  color: var(--accent-cyan);
   width: 42px;
   height: 42px;
   border-radius: 50%;

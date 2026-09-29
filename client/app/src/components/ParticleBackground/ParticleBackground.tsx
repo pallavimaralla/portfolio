@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import './ParticleBackground.css';
+import styles from './ParticleBackground.module.css';
 
 const ParticleBackground: React.FC = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -98,7 +98,7 @@ const ParticleBackground: React.FC = () => {
     };
   }, []);
 
-  return <canvas ref={canvasRef} className="particle-canvas" />;
+  return <canvas ref={canvasRef} className={styles["particle-canvas"]} />;
 };
 
 export default ParticleBackground;

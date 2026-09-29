@@ -1,5 +1,6 @@
 import React from 'react';
-import './Card.css';
+import styles from './Card.module.css';
+import { cx } from '../../lib/cx';
 
 interface CardProps {
   children: React.ReactNode;
@@ -8,7 +9,7 @@ interface CardProps {
 }
 
 export const Card: React.FC<CardProps> = ({ children, gradient = false, className }) => (
-  <div className={`card ${gradient ? 'gradient-border' : ''} ${className || ''}`}>
+  <div className={cx(styles.card, gradient && styles['gradient-border'], className)}>
     {children}
   </div>
 );

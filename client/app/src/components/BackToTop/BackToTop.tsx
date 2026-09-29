@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { FiArrowUp } from 'react-icons/fi';
-import './BackToTop.css';
+import styles from './BackToTop.module.css';
 
 const BackToTop: React.FC = () => {
   const [visible, setVisible] = useState(false);

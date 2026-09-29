@@ -17,8 +17,8 @@
   transition: box-shadow 0.3s ease, border-color 0.3s ease, background 0.3s ease;
 }
 
-.skill-card-cyan:hover   { background: var(--bg-card-hover); border-color: rgba(64, 217, 245, 0.28);   box-shadow: 0 4px 28px rgba(0, 0, 0, 0.5), 0 0 18px rgba(64, 217, 245, 0.07); }
-.skill-card-purple:hover { background: var(--bg-card-hover); border-color: rgba(167, 139, 250, 0.28);  box-shadow: 0 4px 28px rgba(0, 0, 0, 0.5), 0 0 18px rgba(167, 139, 250, 0.07); }
+.skill-card-cyan:hover   { background: var(--bg-card-hover); border-color: rgba(0, 212, 255, 0.28);   box-shadow: 0 4px 28px rgba(0, 0, 0, 0.5), 0 0 18px rgba(0, 212, 255, 0.07); }
+.skill-card-purple:hover { background: var(--bg-card-hover); border-color: rgba(124, 58, 237, 0.28);  box-shadow: 0 4px 28px rgba(0, 0, 0, 0.5), 0 0 18px rgba(124, 58, 237, 0.07); }
 .skill-card-green:hover  { background: var(--bg-card-hover); border-color: rgba(52, 211, 153, 0.28);   box-shadow: 0 4px 28px rgba(0, 0, 0, 0.5), 0 0 18px rgba(52, 211, 153, 0.07); }
 .skill-card-pink:hover   { background: var(--bg-card-hover); border-color: rgba(244, 114, 182, 0.28);  box-shadow: 0 4px 28px rgba(0, 0, 0, 0.5), 0 0 18px rgba(244, 114, 182, 0.07); }
 
