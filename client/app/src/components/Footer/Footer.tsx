@@ -5,11 +5,10 @@ import styles from './Footer.module.css';
 
 const Footer: React.FC = () => (
   <footer className={styles["footer"]}>
-    <div className={`section-container ${styles["footer-inner"]}`}>
-      <span className={`${styles["footer-copy"]} mono`}>
-        &copy; {new Date().getFullYear()} Pallavi Maralla
+    <div className={styles["footer-container"]}>
+      <span className={styles["footer-copy"]}>
+        &copy; 2026 Pallavi Maralla Satish
       </span>
-      <span className={`${styles["footer-built"]} mono`}>Built with React &amp; TypeScript</span>
       <div className={styles["footer-socials"]}>
         <a href={SOCIAL.github} target="_blank" rel="noreferrer" aria-label="GitHub" className={styles["footer-social-link"]}>
           {React.createElement(FiGithub as any, { size: 16 })}
