@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import emailjs from '@emailjs/browser';
+import { sendContactMessage } from '../services/contact';
 
 interface FormState {
   name: string;
@@ -10,18 +10,10 @@ interface FormState {
 type FormStatus = 'idle' | 'sending' | 'sent' | 'error';
 
 interface UseContactFormOptions {
-  serviceId: string;
-  templateId: string;
-  publicKey: string;
   resetDelay?: number;
 }
 
-export const useContactForm = ({
-  serviceId,
-  templateId,
-  publicKey,
-  resetDelay = 3000,
-}: UseContactFormOptions) => {
+export const useContactForm = ({ resetDelay = 3000 }: UseContactFormOptions = {}) => {
   const [form, setForm] = useState<FormState>({ name: '', email: '', message: '' });
   const [status, setStatus] = useState<FormStatus>('idle');
   const [errorMsg, setErrorMsg] = useState('');
@@ -42,18 +34,14 @@ export const useContactForm = ({
     setStatus('sending');
     setErrorMsg('');
 
-    try {
-      await emailjs.send(serviceId, templateId, {
-        from_name: form.name,
-        from_email: form.email,
-        message: form.message,
-      }, publicKey);
+    const result = await sendContactMessage(form);
 
+    if (result.success) {
       setStatus('sent');
       setForm({ name: '', email: '', message: '' });
-    } catch (err) {
+    } else {
       setStatus('error');
-      setErrorMsg('Something went wrong. Please try again or email me directly.');
+      setErrorMsg(result.error || 'Failed to send message. Please try again.');
     }
   };
 

@@ -14,80 +14,48 @@ This guide is for developers who want to run and modify the portfolio locally.
 
 ```bash
 cd portfolio
-npm install --workspaces
-```
-
-### 2. Start Client
-
-```bash
 cd client/app
 npm install
+```
+
+### 2. Start Development Server
+
+```bash
 npm start
 ```
 
 Opens at `http://localhost:3000`
 
-### 3. Start Server (Optional)
-
-In a **new terminal**:
-
-```bash
-cd server/api
-npm install
-npm run dev
-```
-
-Runs on `http://localhost:5000`
-
 ## Available Scripts
 
-### Client
 ```bash
-npm start          # Development server
+npm start          # Development server at http://localhost:3000
 npm run build      # Production build
-npm test           # Run tests
-npm run eject      # Eject from Create React App (one-way operation)
-```
-
-### Server
-```bash
-npm run dev        # Development with auto-reload
-npm start          # Production start
 npm test           # Run tests
 ```
 
 ## Environment Variables
 
-### Server (.env)
+### Client (.env)
 
-Copy `.env.example` to `.env` and configure:
+The contact form uses EmailJS for email delivery. Set these optional environment variables in `client/app/.env`:
 
-```bash
-cp server/api/.env.example server/api/.env
+```
+REACT_APP_EMAILJS_SERVICE_ID=your_service_id
+REACT_APP_EMAILJS_TEMPLATE_ID=your_template_id
+REACT_APP_EMAILJS_PUBLIC_KEY=your_public_key
 ```
 
-Edit `server/api/.env`:
-```
-PORT=5000
-NODE_ENV=development
-# Add other variables as needed
-```
+If these are not configured, the contact form will show a fallback message with a direct email link.
 
 ## Build for Production
 
-### Client
 ```bash
 cd client/app
 npm run build
 ```
 
 Generates optimized build in `build/` directory.
-
-### Server
-```bash
-cd server/api
-npm start
-```
 
 ## Troubleshooting
 
@@ -133,15 +101,11 @@ Ctrl+Shift+R (Windows/Linux)
 
 ## Deployment
 
-**Frontend (Vercel/Netlify):**
+**Frontend (Vercel):**
 1. Push to GitHub
-2. Connect repository to Vercel/Netlify
-3. Deploy with `npm run build`
-
-**Backend (Heroku/Railway/AWS):**
-1. Configure environment variables
-2. Deploy with `npm start`
-3. Set `NODE_ENV=production`
+2. Connect repository to Vercel
+3. Set environment variables (REACT_APP_EMAILJS_*)
+4. Deploy with `npm run build` (automatic)
 
 ## Contributing
 
@@ -155,11 +119,15 @@ To modify or enhance the portfolio:
 
 ## Notes for Developers
 
-- Portfolio content lives in component files (Projects.tsx, Experience.tsx, Skills.tsx, etc.)
+- Portfolio content lives in `src/data/` (jobs.ts, projects.ts, skills.ts, education.ts, highlights.ts, etc.)
+- Components in `src/components/sections/` use data from `src/data/`
+- Custom hooks in `src/hooks/` (useTypewriter, useActiveSection, useContactForm, usePrefersReducedMotion)
+- UI components in `src/components/ui/` (Icon, SectionHeader, Tag, Card)
+- Motion utilities in `src/lib/motion.ts` for consistent Framer Motion variants
+- Contact form uses EmailJS service wrapper in `src/services/contact.ts`
 - Resume PDF: `client/app/public/Pallavi_Maralla_Satish_Resume.pdf`
-- Styling uses CSS modules and CSS-in-JS (Framer Motion)
-- Backend uses Express.js with CORS middleware
-- Dark theme using CSS variables
+- Styling uses CSS Modules and CSS-in-JS (Framer Motion)
+- Dark theme using CSS variables in `src/index.css`
 
 ---
 

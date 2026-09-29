@@ -7,11 +7,7 @@ import { useContactForm } from '../../../hooks';
 import './Contact.css';
 
 const Contact: React.FC = () => {
-  const { form, status, errorMsg, isValid, handleChange, handleSubmit } = useContactForm({
-    serviceId: process.env.REACT_APP_EMAILJS_SERVICE_ID || '',
-    templateId: process.env.REACT_APP_EMAILJS_TEMPLATE_ID || '',
-    publicKey: process.env.REACT_APP_EMAILJS_PUBLIC_KEY || '',
-  });
+  const { form, status, errorMsg, isValid, handleChange, handleSubmit } = useContactForm();
 
   const contactSection = sections.find(s => s.id === 'contact')!;
 
