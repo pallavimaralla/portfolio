@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Icon, Tag, FadeIn } from '../../ui';
+import { FadeIn, GhostPill } from '../../ui';
 import { degrees } from '../../../data/education';
 import styles from './Education.module.css';
 
@@ -24,37 +24,26 @@ const Education: React.FC = () => (
             whileHover={{ y: -3, transition: { duration: 0.2 } }}
           >
             <div className={styles["edu-card-top"]}>
-              <div className={styles["edu-icon-wrap"]}>
-                <Icon name="FiAward" size={26} className={styles["edu-award-icon"]} />
-              </div>
               <div className={styles["edu-main"]}>
                 <div className={styles["edu-degree"]}>{d.degree}</div>
                 <div className={styles["edu-school"]}>{d.school}</div>
                 <div className={styles["edu-meta-row"]}>
-                  <span className={styles["edu-meta-item"]}>
-                    <Icon name="FiCalendar" size={12} />
-                    {d.period}
-                  </span>
-                  <span className={styles["edu-meta-item"]}>
-                    <Icon name="FiMapPin" size={12} />
-                    {d.location}
-                  </span>
+                  <span className={styles["edu-meta-item"]}>{d.period}</span>
+                  <span className={styles["edu-meta-item"]}>•</span>
+                  <span className={styles["edu-meta-item"]}>{d.location}</span>
                 </div>
               </div>
-              <Tag color={d.badgeColor}>{d.badge}</Tag>
+              <GhostPill>{d.badge}</GhostPill>
             </div>
 
             {d.courses && (
               <>
                 <div className={styles["edu-divider"]} />
                 <div className={styles["edu-courses-section"]}>
-                  <div className="edu-courses-label mono">
-                    <Icon name="FiBook" size={13} />
-                    Relevant Coursework
-                  </div>
+                  <div className={styles["edu-courses-label"]}>Relevant Coursework</div>
                   <div className={styles["edu-courses-grid"]}>
                     {d.courses.map(c => (
-                      <Tag key={c} color="purple">{c}</Tag>
+                      <GhostPill key={c}>{c}</GhostPill>
                     ))}
                   </div>
                 </div>
