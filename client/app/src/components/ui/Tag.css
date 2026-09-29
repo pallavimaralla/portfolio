@@ -1,0 +1,34 @@
+/* Tag styles are defined in index.css */
+.tag {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  font-family: 'Fira Code', monospace;
+  letter-spacing: 0.05em;
+}
+
+.tag-cyan {
+  background: rgba(64, 217, 245, 0.1);
+  color: #67e3f9;
+  border: 1px solid rgba(64, 217, 245, 0.28);
+}
+
+.tag-purple {
+  background: rgba(167, 139, 250, 0.1);
+  color: #b8a5fb;
+  border: 1px solid rgba(167, 139, 250, 0.28);
+}
+
+.tag-green {
+  background: rgba(52, 211, 153, 0.1);
+  color: #5eead4;
+  border: 1px solid rgba(52, 211, 153, 0.28);
+}
+
+.tag-pink {
+  background: rgba(244, 114, 182, 0.1);
+  color: #f0abcf;
+  border: 1px solid rgba(244, 114, 182, 0.28);
+}

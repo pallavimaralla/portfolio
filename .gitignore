@@ -62,3 +62,8 @@ pnpm-lock.yaml
 .env.*.local
 .tsbuildinfo
 tsconfig.tsbuildinfo
+
+# Local AI tooling
+.claude/
+.rtk/
+CLAUDE.md

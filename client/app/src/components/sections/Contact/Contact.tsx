@@ -1,72 +1,24 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
-import { FiSend, FiMail, FiGithub, FiLinkedin, FiMapPin } from 'react-icons/fi';
-import emailjs from '@emailjs/browser';
-import { SOCIAL } from '../../config/social';
+import { SectionHeader, Icon } from '../../ui';
+import { profile } from '../../../data/profile';
+import { sections } from '../../../data/sections';
+import { useContactForm } from '../../../hooks';
 import './Contact.css';
 
-// EmailJS config — fill these in after setting up emailjs.com
-const EMAILJS_SERVICE_ID  = process.env.REACT_APP_EMAILJS_SERVICE_ID  || '';
-const EMAILJS_TEMPLATE_ID = process.env.REACT_APP_EMAILJS_TEMPLATE_ID || '';
-const EMAILJS_PUBLIC_KEY  = process.env.REACT_APP_EMAILJS_PUBLIC_KEY  || '';
-
-interface FormState {
-  name: string;
-  email: string;
-  message: string;
-}
-
 const Contact: React.FC = () => {
-  const [form, setForm] = useState<FormState>({ name: '', email: '', message: '' });
-  const [status, setStatus] = useState<'idle' | 'sending' | 'sent' | 'error'>('idle');
-  const [errorMsg, setErrorMsg] = useState('');
+  const { form, status, errorMsg, isValid, handleChange, handleSubmit } = useContactForm({
+    serviceId: process.env.REACT_APP_EMAILJS_SERVICE_ID || '',
+    templateId: process.env.REACT_APP_EMAILJS_TEMPLATE_ID || '',
+    publicKey: process.env.REACT_APP_EMAILJS_PUBLIC_KEY || '',
+  });
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setForm(prev => ({ ...prev, [e.target.name]: e.target.value }));
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setStatus('sending');
-    setErrorMsg('');
-
-    try {
-      await emailjs.send(
-        EMAILJS_SERVICE_ID,
-        EMAILJS_TEMPLATE_ID,
-        {
-          from_name: form.name,
-          from_email: form.email,
-          message: form.message,
-        },
-        EMAILJS_PUBLIC_KEY
-      );
-      setStatus('sent');
-      setForm({ name: '', email: '', message: '' });
-    } catch (err: any) {
-      setStatus('error');
-      setErrorMsg('Something went wrong. Please try again or email me directly.');
-    }
-  };
-
-  const isValid = form.name.trim() && form.email.trim() && form.message.trim();
+  const contactSection = sections.find(s => s.id === 'contact')!;
 
   return (
     <section id="contact" className="contact-section">
       <div className="section-container">
-        <motion.div
-          className="section-header"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-        >
-          <div className="section-label mono">
-            <span className="label-num">06.</span> Contact
-          </div>
-          <h2 className="section-title">Get In Touch</h2>
-          <div className="section-divider" />
-        </motion.div>
+        <SectionHeader num={contactSection.number} label={contactSection.label} title={contactSection.title} />
 
         <div className="contact-grid">
           <motion.div
@@ -82,23 +34,23 @@ const Contact: React.FC = () => {
             </p>
 
             <div className="contact-links">
-              <a href={SOCIAL.mailto} className="contact-link-item">
+              <a href={`mailto:${profile.email}`} className="contact-link-item">
                 <div className="contact-link-icon icon-cyan">
-                  {React.createElement(FiMail as any, { size: 18 })}
+                  <Icon name="FiMail" size={18} />
                 </div>
                 <div>
                   <div className="contact-link-label mono">Email</div>
-                  <div className="contact-link-value">{SOCIAL.email}</div>
+                  <div className="contact-link-value">{profile.email}</div>
                 </div>
               </a>
               <a
-                href={SOCIAL.linkedin}
+                href={profile.linkedin}
                 target="_blank"
                 rel="noreferrer"
                 className="contact-link-item"
               >
                 <div className="contact-link-icon icon-purple">
-                  {React.createElement(FiLinkedin as any, { size: 18 })}
+                  <Icon name="FiLinkedin" size={18} />
                 </div>
                 <div>
                   <div className="contact-link-label mono">LinkedIn</div>
@@ -106,13 +58,13 @@ const Contact: React.FC = () => {
                 </div>
               </a>
               <a
-                href={SOCIAL.github}
+                href={profile.github}
                 target="_blank"
                 rel="noreferrer"
                 className="contact-link-item"
               >
                 <div className="contact-link-icon icon-green">
-                  {React.createElement(FiGithub as any, { size: 18 })}
+                  <Icon name="FiGithub" size={18} />
                 </div>
                 <div>
                   <div className="contact-link-label mono">GitHub</div>
@@ -121,11 +73,11 @@ const Contact: React.FC = () => {
               </a>
               <div className="contact-link-item no-hover">
                 <div className="contact-link-icon icon-pink">
-                  {React.createElement(FiMapPin as any, { size: 18 })}
+                  <Icon name="FiMapPin" size={18} />
                 </div>
                 <div>
                   <div className="contact-link-label mono">Location</div>
-                  <div className="contact-link-value">New Jersey, USA · Open to Relocation</div>
+                  <div className="contact-link-value">{profile.location} · Open to Relocation</div>
                 </div>
               </div>
             </div>
@@ -198,7 +150,7 @@ const Contact: React.FC = () => {
                 '✓ Message Sent!'
               ) : (
                 <>
-                  {React.createElement(FiSend as any, { size: 15 })}
+                  <Icon name="FiSend" size={15} />
                   Send Message
                 </>
               )}

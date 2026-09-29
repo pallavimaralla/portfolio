@@ -1,52 +1,19 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
-import { FiGithub, FiLinkedin, FiMail, FiDownload, FiArrowDown } from 'react-icons/fi';
-import { SOCIAL } from '../../config/social';
+import { Icon } from '../ui';
+import { profile } from '../../data/profile';
+import { heroStats, floatingBadges, roles } from '../../data/heroStats';
+import { useTypewriter } from '../../hooks';
 import './Hero.css';
 
-const roles = [
-  'Full Stack Developer',
-  'Backend Engineer',
-  'Software Development Engineer (SDE)',
-  'Java Backend Developer',
-  'Node.js Developer',
-  'API Developer',
-  'Android Developer',
-];
-
-const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const SOCIAL = {
+  github: profile.github,
+  linkedin: profile.linkedin,
+  mailto: `mailto:${profile.email}`,
+};
 
 const Hero: React.FC = () => {
-  const [roleIndex, setRoleIndex] = useState(0);
-  const [displayed, setDisplayed] = useState(prefersReducedMotion ? roles[0] : '');
-  const [isDeleting, setIsDeleting] = useState(false);
-  const [charIndex, setCharIndex] = useState(prefersReducedMotion ? roles[0].length : 0);
-
-  useEffect(() => {
-    if (prefersReducedMotion) return;
-    const current = roles[roleIndex];
-    let timeout: ReturnType<typeof setTimeout>;
-
-    if (!isDeleting && charIndex <= current.length) {
-      timeout = setTimeout(() => {
-        setDisplayed(current.slice(0, charIndex));
-        setCharIndex(c => c + 1);
-      }, 80);
-    } else if (!isDeleting && charIndex > current.length) {
-      timeout = setTimeout(() => setIsDeleting(true), 1800);
-    } else if (isDeleting && charIndex >= 0) {
-      timeout = setTimeout(() => {
-        setDisplayed(current.slice(0, charIndex));
-        setCharIndex(c => c - 1);
-      }, 45);
-    } else {
-      setIsDeleting(false);
-      setRoleIndex(r => (r + 1) % roles.length);
-      setCharIndex(0);
-    }
-
-    return () => clearTimeout(timeout);
-  }, [charIndex, isDeleting, roleIndex]);
+  const { displayed } = useTypewriter({ texts: roles });
 
   const scrollToAbout = () => {
     document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' });
@@ -107,25 +74,15 @@ const Hero: React.FC = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.65 }}
           >
-            <div className="stat-item">
-              <span className="stat-value">3+</span>
-              <span className="stat-label">Years Exp.</span>
-            </div>
-            <div className="stat-divider" />
-            <div className="stat-item">
-              <span className="stat-value">AI</span>
-              <span className="stat-label">LLM & Embeddings</span>
-            </div>
-            <div className="stat-divider" />
-            <div className="stat-item">
-              <span className="stat-value">CI/CD</span>
-              <span className="stat-label">Jenkins & Git</span>
-            </div>
-            <div className="stat-divider" />
-            <div className="stat-item">
-              <span className="stat-value">Agile</span>
-              <span className="stat-label">Scrum & Sprints</span>
-            </div>
+            {heroStats.map((stat, i) => (
+              <React.Fragment key={stat.value}>
+                <div className="stat-item">
+                  <span className="stat-value">{stat.value}</span>
+                  <span className="stat-label">{stat.label}</span>
+                </div>
+                {i < heroStats.length - 1 && <div className="stat-divider" />}
+              </React.Fragment>
+            ))}
           </motion.div>
 
           <motion.div
@@ -135,7 +92,7 @@ const Hero: React.FC = () => {
             transition={{ duration: 0.5, delay: 0.75 }}
           >
             <button className="btn-primary" onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}>
-              {React.createElement(FiMail as any, { style: { marginRight: '0.5rem' } })}
+              <Icon name="FiMail" style={{ marginRight: '0.5rem' }} />
               Get In Touch
             </button>
             <a
@@ -144,7 +101,7 @@ const Hero: React.FC = () => {
               download
               style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}
             >
-              {React.createElement(FiDownload as any)}
+              <Icon name="FiDownload" />
               Resume
             </a>
           </motion.div>
@@ -156,13 +113,13 @@ const Hero: React.FC = () => {
             transition={{ duration: 0.5, delay: 0.9 }}
           >
             <a href={SOCIAL.github} target="_blank" rel="noreferrer" className="hero-social-link" aria-label="GitHub">
-              {React.createElement(FiGithub as any, { size: 20 })}
+              <Icon name="FiGithub" size={20} />
             </a>
             <a href={SOCIAL.linkedin} target="_blank" rel="noreferrer" className="hero-social-link" aria-label="LinkedIn">
-              {React.createElement(FiLinkedin as any, { size: 20 })}
+              <Icon name="FiLinkedin" size={20} />
             </a>
             <a href={SOCIAL.mailto} className="hero-social-link" aria-label="Email">
-              {React.createElement(FiMail as any, { size: 20 })}
+              <Icon name="FiMail" size={20} />
             </a>
             <div className="social-line" />
           </motion.div>
@@ -241,29 +198,7 @@ const Hero: React.FC = () => {
           </div>
 
           <div className="floating-badges">
-            {[
-              { label: '☕ Java',         cls: 'badge-java',     y: 8,  dur: 3.0, delay: 0.00 },
-              { label: '🔺 Vert.x',      cls: 'badge-vertx',    y: 10, dur: 3.5, delay: 0.40 },
-              { label: '📨 Kafka',       cls: 'badge-kafka',    y: 7,  dur: 2.8, delay: 0.80 },
-              { label: '🐍 Python',      cls: 'badge-python',   y: 9,  dur: 3.3, delay: 0.20 },
-              { label: '🟢 Node.js',     cls: 'badge-node',     y: 8,  dur: 3.1, delay: 0.60 },
-              { label: '⚛️ React.js',    cls: 'badge-react',    y: 9,  dur: 3.2, delay: 0.10 },
-              { label: '🗄️ Redis',       cls: 'badge-redis',    y: 6,  dur: 2.9, delay: 1.00 },
-              { label: '🔧 Git',         cls: 'badge-git',      y: 9,  dur: 3.4, delay: 0.30 },
-              { label: '⚙️ CI/CD',      cls: 'badge-cicd',     y: 7,  dur: 3.0, delay: 0.70 },
-              { label: '📱 Kotlin',      cls: 'badge-kotlin',   y: 8,  dur: 3.2, delay: 0.50 },
-              { label: '🔥 Firebase',    cls: 'badge-firebase', y: 10, dur: 3.6, delay: 0.90 },
-              { label: '☁️ GCP',         cls: 'badge-gcp',      y: 7,  dur: 3.1, delay: 1.20 },
-              { label: '🌩️ AWS',         cls: 'badge-aws',      y: 8,  dur: 2.9, delay: 0.35 },
-              { label: '🐳 Docker',      cls: 'badge-docker',   y: 9,  dur: 3.3, delay: 0.65 },
-              { label: '🌀 Spring Boot', cls: 'badge-spring',   y: 6,  dur: 3.0, delay: 1.10 },
-              { label: '🔷 TypeScript',  cls: 'badge-ts',       y: 8,  dur: 3.4, delay: 0.45 },
-              { label: '🛢️ PostgreSQL',  cls: 'badge-postgres', y: 7,  dur: 2.8, delay: 0.85 },
-              { label: '🍃 MongoDB',     cls: 'badge-mongo',   y: 9,  dur: 3.1, delay: 0.25 },
-              { label: '🪸 ScyllaDB',   cls: 'badge-scylla',  y: 8,  dur: 3.0, delay: 1.30 },
-              { label: '📋 Zoho',       cls: 'badge-zoho',    y: 7,  dur: 2.9, delay: 0.55 },
-              { label: '📖 Swagger',    cls: 'badge-swagger', y: 9,  dur: 3.2, delay: 0.95 },
-            ].map(({ label, cls, y, dur, delay }) => (
+            {floatingBadges.map(({ label, cls, y, dur, delay }) => (
               <motion.div
                 key={label}
                 className={`float-badge ${cls}`}
@@ -286,7 +221,7 @@ const Hero: React.FC = () => {
         whileInView={{ opacity: 1 }}
         aria-label="Scroll to about"
       >
-        {React.createElement(FiArrowDown as any, { size: 20 })}
+        <Icon name="FiArrowDown" size={20} />
       </motion.button>
     </section>
   );

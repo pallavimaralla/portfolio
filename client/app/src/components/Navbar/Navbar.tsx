@@ -1,35 +1,21 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FiMenu, FiX, FiGithub, FiLinkedin } from 'react-icons/fi';
-import { SOCIAL } from '../../config/social';
+import { Icon } from '../ui';
+import { profile } from '../../data/profile';
+import { sections } from '../../data/sections';
+import { useActiveSection } from '../../hooks';
 import './Navbar.css';
 
-const navLinks = [
-  { label: 'About', href: '#about' },
-  { label: 'Experience', href: '#experience' },
-  { label: 'Projects', href: '#projects' },
-  { label: 'Skills', href: '#skills' },
-  { label: 'Education', href: '#education' },
-  { label: 'Contact', href: '#contact' },
-];
+const navLinks = sections.map(s => ({ label: s.label, href: `#${s.id}` }));
 
 const Navbar: React.FC = () => {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
-  const [activeSection, setActiveSection] = useState('');
+  const activeSection = useActiveSection();
 
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 50);
-
-      const sections = navLinks.map(l => l.href.replace('#', ''));
-      for (const section of sections.reverse()) {
-        const el = document.getElementById(section);
-        if (el && window.scrollY >= el.offsetTop - 120) {
-          setActiveSection(section);
-          break;
-        }
-      }
     };
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
@@ -72,11 +58,11 @@ const Navbar: React.FC = () => {
             </motion.button>
           ))}
           <div className="navbar-socials">
-            <a href={SOCIAL.github} target="_blank" rel="noreferrer" className="social-icon">
-              {React.createElement(FiGithub as any)}
+            <a href={profile.github} target="_blank" rel="noreferrer" className="social-icon">
+              <Icon name="FiGithub" />
             </a>
-            <a href={SOCIAL.linkedin} target="_blank" rel="noreferrer" className="social-icon">
-              {React.createElement(FiLinkedin as any)}
+            <a href={profile.linkedin} target="_blank" rel="noreferrer" className="social-icon">
+              <Icon name="FiLinkedin" />
             </a>
           </div>
         </div>
@@ -89,7 +75,7 @@ const Navbar: React.FC = () => {
           aria-label={menuOpen ? 'Close navigation menu' : 'Open navigation menu'}
           onClick={() => setMenuOpen(!menuOpen)}
         >
-          {menuOpen ? React.createElement(FiX as any, { size: 22 }) : React.createElement(FiMenu as any, { size: 22 })}
+          {menuOpen ? <Icon name="FiX" size={22} /> : <Icon name="FiMenu" size={22} />}
         </button>
       </div>
 
@@ -119,11 +105,11 @@ const Navbar: React.FC = () => {
               </motion.button>
             ))}
             <div className="mobile-socials">
-              <a href={SOCIAL.github} target="_blank" rel="noreferrer" className="social-icon">
-                {React.createElement(FiGithub as any, { size: 20 })}
+              <a href={profile.github} target="_blank" rel="noreferrer" className="social-icon">
+                <Icon name="FiGithub" size={20} />
               </a>
-              <a href={SOCIAL.linkedin} target="_blank" rel="noreferrer" className="social-icon">
-                {React.createElement(FiLinkedin as any, { size: 20 })}
+              <a href={profile.linkedin} target="_blank" rel="noreferrer" className="social-icon">
+                <Icon name="FiLinkedin" size={20} />
               </a>
             </div>
           </motion.div>
