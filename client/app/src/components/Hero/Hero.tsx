@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Icon } from '../ui';
+import { Icon, FadeIn, GradientText } from '../ui';
 import { profile } from '../../data/profile';
 import { heroStats, floatingBadges, roles } from '../../data/heroStats';
 import { useTypewriter } from '../../hooks';
@@ -34,13 +34,15 @@ const Hero: React.FC = () => {
 
           <motion.h1
             className={styles["hero-name"]}
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.25 }}
+            transition={{ duration: 0.7, delay: 0.15, ease: [0.25, 0.1, 0.25, 1] }}
           >
-            Pallavi
-            <br />
-            <span className={styles["hero-name-last"]}>Maralla Satish</span>
+            <GradientText variant="name">
+              Pallavi
+              <br />
+              <span className={styles["hero-name-last"]}>Maralla Satish</span>
+            </GradientText>
           </motion.h1>
 
           <motion.div
@@ -60,7 +62,7 @@ const Hero: React.FC = () => {
             className={styles["hero-summary"]}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.55 }}
+            transition={{ duration: 0.7, delay: 0.35, ease: [0.25, 0.1, 0.25, 1] }}
           >
             Full Stack & Backend Engineer with <span className={styles["highlight"]}>3+ years</span> of experience in{' '}
             <span className={styles["highlight"]}>React.js</span>, <span className={styles["highlight"]}>Node.js</span>,{' '}
@@ -89,7 +91,7 @@ const Hero: React.FC = () => {
             className={styles["hero-actions"]}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.75 }}
+            transition={{ duration: 0.7, delay: 0.5, ease: [0.25, 0.1, 0.25, 1] }}
           >
             <button className={styles["btn-primary"]} onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}>
               <Icon name="FiMail" style={{ marginRight: '0.5rem' }} />
@@ -127,9 +129,9 @@ const Hero: React.FC = () => {
 
         <motion.div
           className={styles["hero-visual"]}
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.8, delay: 0.3 }}
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
         >
           <div className={styles["code-window"]}>
             <div className={styles["code-window-header"]}>

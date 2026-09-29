@@ -55,6 +55,10 @@
   --gradient-2: linear-gradient(135deg, #7c3aed, #f472b6);
   --gradient-3: linear-gradient(135deg, #34d399, #00d4ff);
 
+  /* Text Gradients */
+  --gradient-heading: linear-gradient(180deg, #e2e8f0 0%, #94a3b8 100%);
+  --gradient-name: linear-gradient(180deg, #00d4ff 0%, #7c3aed 100%);
+
   /* Shadows */
   --shadow-glow: 0 0 30px rgba(0, 212, 255, 0.12);
   --shadow-card: 0 4px 24px rgba(0, 0, 0, 0.45);

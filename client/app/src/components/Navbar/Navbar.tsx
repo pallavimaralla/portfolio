@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Icon } from '../ui';
+import { Icon, FadeIn } from '../ui';
 import { profile } from '../../data/profile';
 import { sections } from '../../data/sections';
 import { useActiveSection } from '../../hooks';
@@ -29,12 +29,13 @@ const Navbar: React.FC = () => {
   };
 
   return (
-    <motion.nav
+    <FadeIn
       className={`navbar ${scrolled ? 'navbar-scrolled' : ''}`}
-      initial={{ y: -80, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.6, ease: 'easeOut' }}
+      delay={0}
+      y={-20}
+      duration={0.7}
     >
+      <nav>
       <div className={styles["navbar-inner"]}>
         <a className={styles["navbar-logo"]} href="#hero" onClick={() => handleNavClick('#hero')}>
           <span className={styles["logo-bracket"]}>&lt;</span>
@@ -114,7 +115,8 @@ const Navbar: React.FC = () => {
           </motion.nav>
         )}
       </AnimatePresence>
-    </motion.nav>
+      </nav>
+    </FadeIn>
   );
 };
 

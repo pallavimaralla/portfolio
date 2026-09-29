@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import styles from './SectionHeader.module.css';
 import { cx } from '../../lib/cx';
+import { GradientText } from './GradientText';
 
 interface SectionHeaderProps {
   num: string;
@@ -21,7 +22,9 @@ export const SectionHeader: React.FC<SectionHeaderProps> = ({ num, label, title,
     <div className={cx(styles['section-label'], 'mono')}>
       <span className={styles['label-num']}>{num}.</span> {label}
     </div>
-    <h2 className={styles['section-title']}>{title}</h2>
+    <h2 className={styles['section-title']}>
+      <GradientText variant="heading">{title}</GradientText>
+    </h2>
     <div className={styles['section-divider']} />
     {children}
   </motion.div>
