@@ -3,6 +3,7 @@ import './index.css';
 import './App.css';
 import Navbar from './components/Navbar/Navbar';
 import Hero from './components/Hero/Hero';
+import SkillsStrip from './components/SkillsStrip/SkillsStrip';
 import About from './components/sections/About/About';
 import Experience from './components/sections/Experience/Experience';
 import Projects from './components/sections/Projects/Projects';
@@ -38,6 +39,7 @@ function App() {
       <Navbar />
       <main>
         <Hero />
+        <SkillsStrip />
         <About />
         <Experience />
         <Projects />

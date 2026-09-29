@@ -1,13 +1,10 @@
 import React from 'react';
-import { SectionHeader, FadeIn, Marquee } from '../../ui';
+import { SectionHeader, FadeIn, GhostPill } from '../../ui';
 import { sections } from '../../../data/sections';
 import { skillCategories } from '../../../data/skills';
 import styles from './Skills.module.css';
 
 const skillSection = sections.find(s => s.id === 'skills')!;
-
-// Flatten all skills from categories into a single array
-const allSkills = skillCategories.flatMap(cat => cat.skills);
 
 const Skills: React.FC = () => (
   <section id="skills" className={styles['skills-section']}>
@@ -16,8 +13,17 @@ const Skills: React.FC = () => (
         <SectionHeader num={skillSection.number} label={skillSection.label} title={skillSection.title} />
       </FadeIn>
 
-      <FadeIn as="div" className={styles['marquee-wrapper']} delay={0.15} y={20} duration={0.7}>
-        <Marquee items={allSkills} />
+      <FadeIn as="div" className={styles['skills-list']} delay={0.15} y={20} duration={0.7}>
+        {skillCategories.map((category, i) => (
+          <div key={category.label} className={styles['category-group']}>
+            <h3 className={styles['category-title']}>{category.label}</h3>
+            <div className={styles['skills-tags']}>
+              {category.skills.map(skill => (
+                <GhostPill key={skill}>{skill}</GhostPill>
+              ))}
+            </div>
+          </div>
+        ))}
       </FadeIn>
     </div>
   </section>
