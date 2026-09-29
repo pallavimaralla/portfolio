@@ -1,21 +1,19 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { SectionHeader, Icon, FadeIn } from '../../ui';
+import { Icon, FadeIn } from '../../ui';
 import { profile } from '../../../data/profile';
-import { sections } from '../../../data/sections';
 import { useContactForm } from '../../../hooks';
 import styles from './Contact.module.css';
 
 const Contact: React.FC = () => {
   const { form, status, errorMsg, isValid, handleChange, handleSubmit } = useContactForm();
 
-  const contactSection = sections.find(s => s.id === 'contact')!;
-
   return (
     <section id="contact" className={styles["contact-section"]}>
       <div className={styles["section-container"]}>
-        <FadeIn as="div" delay={0} y={20} duration={0.7}>
-          <SectionHeader num={contactSection.number} label={contactSection.label} title={contactSection.title} />
+        {/* Giant centered heading */}
+        <FadeIn as="h2" className={styles["contact-heading"]} delay={0} y={20} duration={0.7}>
+          <span className={styles["heading-gradient"]}>CONTACT</span>
         </FadeIn>
 
         <FadeIn as="div" className={styles["contact-grid"]} delay={0.15} y={20} duration={0.7}>

@@ -1,17 +1,15 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { SectionHeader, Icon, Tag, FadeIn } from '../../ui';
-import { sections } from '../../../data/sections';
+import { Icon, Tag, FadeIn } from '../../ui';
 import { degrees } from '../../../data/education';
 import styles from './Education.module.css';
-
-const eduSection = sections.find(s => s.id === 'education')!;
 
 const Education: React.FC = () => (
   <section id="education" className={styles["education-section"]}>
     <div className={styles["section-container"]}>
-      <FadeIn as="div" delay={0} y={20} duration={0.7}>
-        <SectionHeader num={eduSection.number} label={eduSection.label} title={eduSection.title} />
+      {/* Giant centered heading */}
+      <FadeIn as="h2" className={styles["education-heading"]} delay={0} y={20} duration={0.7}>
+        <span className={styles["heading-gradient"]}>EDUCATION</span>
       </FadeIn>
 
       <FadeIn as="div" className={styles["edu-list"]} delay={0.15} y={20} duration={0.7}>
