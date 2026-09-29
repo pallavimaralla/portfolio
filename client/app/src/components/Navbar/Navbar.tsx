@@ -30,7 +30,6 @@ const Navbar: React.FC = () => {
 
   return (
     <motion.nav
-      role="navigation"
       className={`navbar ${scrolled ? 'navbar-scrolled' : ''}`}
       initial={{ y: -80, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
@@ -45,17 +44,18 @@ const Navbar: React.FC = () => {
 
         <div className={styles["navbar-links"]}>
           {navLinks.map((link, i) => (
-            <motion.button
+            <motion.a
               key={link.label}
+              href={link.href}
               className={`nav-link ${activeSection === link.href.replace('#', '') ? 'active' : ''}`}
-              onClick={() => handleNavClick(link.href)}
+              onClick={(e) => { e.preventDefault(); handleNavClick(link.href); }}
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.1 * i + 0.3 }}
             >
               <span className="nav-index mono">0{i + 1}.</span>
               {link.label}
-            </motion.button>
+            </motion.a>
           ))}
           <div className={styles["navbar-socials"]}>
             <a href={profile.github} target="_blank" rel="noreferrer" className={styles["social-icon"]}>
@@ -81,10 +81,8 @@ const Navbar: React.FC = () => {
 
       <AnimatePresence>
         {menuOpen && (
-          <motion.div
+          <motion.nav
             id="mobile-menu"
-            role="menu"
-            aria-hidden={!menuOpen}
             className={styles["mobile-menu"]}
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
@@ -92,17 +90,18 @@ const Navbar: React.FC = () => {
             transition={{ duration: 0.3 }}
           >
             {navLinks.map((link, i) => (
-              <motion.button
+              <motion.a
                 key={link.label}
+                href={link.href}
                 className={styles["mobile-nav-link"]}
-                onClick={() => handleNavClick(link.href)}
+                onClick={(e) => { e.preventDefault(); handleNavClick(link.href); }}
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: i * 0.05 }}
               >
                 <span className="nav-index mono">0{i + 1}.</span>
                 {link.label}
-              </motion.button>
+              </motion.a>
             ))}
             <div className={styles["mobile-socials"]}>
               <a href={profile.github} target="_blank" rel="noreferrer" className={styles["social-icon"]}>
@@ -112,7 +111,7 @@ const Navbar: React.FC = () => {
                 <Icon name="FiLinkedin" size={20} />
               </a>
             </div>
-          </motion.div>
+          </motion.nav>
         )}
       </AnimatePresence>
     </motion.nav>

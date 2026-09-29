@@ -1,8 +1,10 @@
 import React, { useEffect, useRef } from 'react';
 import styles from './ParticleBackground.module.css';
+import { usePrefersReducedMotion } from '../../hooks';
 
 const ParticleBackground: React.FC = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const prefersReduced = usePrefersReducedMotion();
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -13,12 +15,30 @@ const ParticleBackground: React.FC = () => {
     let animationId: number;
     let particles: Particle[] = [];
 
+    const getComputedColor = (cssVar: string): string => {
+      const value = getComputedStyle(document.documentElement).getPropertyValue(cssVar).trim();
+      return value || '#00d4ff';
+    };
+
     const resize = () => {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
+      const dpr = window.devicePixelRatio || 1;
+      const width = window.innerWidth;
+      const height = window.innerHeight;
+      canvas.width = width * dpr;
+      canvas.height = height * dpr;
+      canvas.style.width = `${width}px`;
+      canvas.style.height = `${height}px`;
+      ctx.scale(dpr, dpr);
     };
     resize();
     window.addEventListener('resize', resize);
+
+    const colors = [
+      getComputedColor('--accent-cyan'),
+      getComputedColor('--accent-purple'),
+      getComputedColor('--accent-green-bright'),
+      getComputedColor('--syntax-pink'),
+    ];
 
     class Particle {
       x: number;
@@ -30,21 +50,24 @@ const ParticleBackground: React.FC = () => {
       color: string;
 
       constructor() {
-        this.x = Math.random() * canvas!.width;
-        this.y = Math.random() * canvas!.height;
-        this.vx = (Math.random() - 0.5) * 0.4;
-        this.vy = (Math.random() - 0.5) * 0.4;
+        this.x = Math.random() * (canvas!.width / (window.devicePixelRatio || 1));
+        this.y = Math.random() * (canvas!.height / (window.devicePixelRatio || 1));
+        this.vx = prefersReduced ? 0 : (Math.random() - 0.5) * 0.4;
+        this.vy = prefersReduced ? 0 : (Math.random() - 0.5) * 0.4;
         this.size = Math.random() * 1.5 + 0.5;
         this.opacity = Math.random() * 0.5 + 0.1;
-        const colors = ['#00d4ff', '#7c3aed', '#00ff88', '#ff006e'];
         this.color = colors[Math.floor(Math.random() * colors.length)];
       }
 
       update() {
-        this.x += this.vx;
-        this.y += this.vy;
-        if (this.x < 0 || this.x > canvas!.width) this.vx *= -1;
-        if (this.y < 0 || this.y > canvas!.height) this.vy *= -1;
+        if (!prefersReduced) {
+          this.x += this.vx;
+          this.y += this.vy;
+        }
+        const w = canvas!.width / (window.devicePixelRatio || 1);
+        const h = canvas!.height / (window.devicePixelRatio || 1);
+        if (this.x < 0 || this.x > w) this.vx *= -1;
+        if (this.y < 0 || this.y > h) this.vy *= -1;
       }
 
       draw() {
@@ -64,6 +87,7 @@ const ParticleBackground: React.FC = () => {
     }
 
     const drawConnections = () => {
+      if (prefersReduced) return;
       for (let i = 0; i < particles.length; i++) {
         for (let j = i + 1; j < particles.length; j++) {
           const dx = particles[i].x - particles[j].x;
@@ -73,7 +97,7 @@ const ParticleBackground: React.FC = () => {
             ctx.beginPath();
             ctx.moveTo(particles[i].x, particles[i].y);
             ctx.lineTo(particles[j].x, particles[j].y);
-            ctx.strokeStyle = '#00d4ff';
+            ctx.strokeStyle = colors[0];
             ctx.globalAlpha = (1 - dist / 120) * 0.08;
             ctx.lineWidth = 0.5;
             ctx.stroke();
@@ -96,7 +120,7 @@ const ParticleBackground: React.FC = () => {
       cancelAnimationFrame(animationId);
       window.removeEventListener('resize', resize);
     };
-  }, []);
+  }, [prefersReduced]);
 
   return <canvas ref={canvasRef} className={styles["particle-canvas"]} />;
 };

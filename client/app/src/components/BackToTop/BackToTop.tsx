@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { FiArrowUp } from 'react-icons/fi';
 import styles from './BackToTop.module.css';
+import { cx } from '../../lib/cx';
 
 const BackToTop: React.FC = () => {
   const [visible, setVisible] = useState(false);
@@ -15,7 +16,7 @@ const BackToTop: React.FC = () => {
 
   return (
     <button
-      className={`back-to-top ${visible ? 'back-to-top--visible' : ''}`}
+      className={cx(styles['back-to-top'], visible && styles['back-to-top--visible'])}
       onClick={scrollToTop}
       aria-label="Back to top"
     >
