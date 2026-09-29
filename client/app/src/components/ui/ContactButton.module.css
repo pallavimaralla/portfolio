@@ -1,4 +1,8 @@
 .button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
   border-radius: 999px;
   background: var(--gradient-cta);
   color: var(--surface-light);
@@ -40,8 +44,8 @@
 }
 
 .button:focus-visible {
-  outline: 3px solid var(--text-light);
-  outline-offset: 2px;
+  outline: 2px solid var(--text-light);
+  outline-offset: 3px;
 }
 
 @media (max-width: 640px) {

@@ -1,25 +1,19 @@
-import React, { useState, useEffect } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Icon, FadeIn } from '../ui';
-import { profile } from '../../data/profile';
 import { sections } from '../../data/sections';
-import { useActiveSection } from '../../hooks';
+import { usePrefersReducedMotion } from '../../hooks';
 import styles from './Navbar.module.css';
 
-const navLinks = sections.map(s => ({ label: s.label, href: `#${s.id}` }));
+const navLinks = [
+  { label: 'PM', href: '#hero' },
+  ...sections.map(s => ({ label: s.label, href: `#${s.id}` })),
+];
 
 const Navbar: React.FC = () => {
-  const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
-  const activeSection = useActiveSection();
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  const hamburgerRef = useRef<HTMLButtonElement>(null);
+  const prefersReduced = usePrefersReducedMotion();
 
   const handleNavClick = (href: string) => {
     setMenuOpen(false);
@@ -28,94 +22,94 @@ const Navbar: React.FC = () => {
     if (el) el.scrollIntoView({ behavior: 'smooth' });
   };
 
+  const handleEscape = (e: KeyboardEvent) => {
+    if (e.key === 'Escape' && menuOpen) {
+      setMenuOpen(false);
+      hamburgerRef.current?.focus();
+    }
+  };
+
+  useEffect(() => {
+    if (menuOpen) {
+      document.addEventListener('keydown', handleEscape);
+      return () => document.removeEventListener('keydown', handleEscape);
+    }
+  }, [menuOpen]);
+
+  const closedMenu = () => {
+    setMenuOpen(false);
+    hamburgerRef.current?.focus();
+  };
+
   return (
-    <FadeIn
-      className={`navbar ${scrolled ? 'navbar-scrolled' : ''}`}
-      delay={0}
-      y={-20}
-      duration={0.7}
-    >
-      <nav>
-      <div className={styles["navbar-inner"]}>
-        <a className={styles["navbar-logo"]} href="#hero" onClick={() => handleNavClick('#hero')}>
-          <span className={styles["logo-bracket"]}>&lt;</span>
-          <span className={styles["logo-text"]}>PM</span>
-          <span className={styles["logo-bracket"]}>/&gt;</span>
+    <FadeIn as="nav" className={styles.navbar} delay={0} y={-20} duration={0.7}>
+      <div className={styles.container}>
+        {/* Logo */}
+        <a
+          href="#hero"
+          className={styles.logo}
+          onClick={() => handleNavClick('#hero')}
+        >
+          PM
         </a>
 
-        <div className={styles["navbar-links"]}>
-          {navLinks.map((link, i) => (
-            <motion.a
+        {/* Desktop Links */}
+        <div className={styles.links}>
+          {navLinks.map((link) => (
+            <a
               key={link.label}
               href={link.href}
-              className={`nav-link ${activeSection === link.href.replace('#', '') ? 'active' : ''}`}
-              onClick={(e) => { e.preventDefault(); handleNavClick(link.href); }}
-              initial={{ opacity: 0, y: -10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.1 * i + 0.3 }}
+              className={styles.link}
+              onClick={(e) => {
+                e.preventDefault();
+                handleNavClick(link.href);
+              }}
             >
-              <span className="nav-index mono">0{i + 1}.</span>
               {link.label}
-            </motion.a>
+            </a>
           ))}
-          <div className={styles["navbar-socials"]}>
-            <a href={profile.github} target="_blank" rel="noreferrer" className={styles["social-icon"]}>
-              <Icon name="FiGithub" />
-            </a>
-            <a href={profile.linkedin} target="_blank" rel="noreferrer" className={styles["social-icon"]}>
-              <Icon name="FiLinkedin" />
-            </a>
-          </div>
         </div>
 
+        {/* Mobile Hamburger */}
         <button
-          id="navbar-hamburger"
-          className={styles["hamburger"]}
-          aria-controls="mobile-menu"
+          className={styles.hamburger}
+          aria-label={menuOpen ? 'Close menu' : 'Open menu'}
           aria-expanded={menuOpen}
-          aria-label={menuOpen ? 'Close navigation menu' : 'Open navigation menu'}
           onClick={() => setMenuOpen(!menuOpen)}
         >
-          {menuOpen ? <Icon name="FiX" size={22} /> : <Icon name="FiMenu" size={22} />}
+          <Icon name={menuOpen ? 'FiX' : 'FiMenu'} size={24} />
         </button>
       </div>
 
+      {/* Mobile Menu */}
       <AnimatePresence>
         {menuOpen && (
-          <motion.nav
-            id="mobile-menu"
-            className={styles["mobile-menu"]}
+          <motion.div
+            className={styles.mobileMenu}
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.3 }}
+            transition={{ duration: prefersReduced ? 0 : 0.3 }}
           >
             {navLinks.map((link, i) => (
               <motion.a
                 key={link.label}
                 href={link.href}
-                className={styles["mobile-nav-link"]}
-                onClick={(e) => { e.preventDefault(); handleNavClick(link.href); }}
+                className={styles.mobileLink}
+                onClick={(e) => {
+                  e.preventDefault();
+                  handleNavClick(link.href);
+                }}
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: i * 0.05 }}
+                transition={{ delay: prefersReduced ? 0 : i * 0.05 }}
               >
-                <span className="nav-index mono">0{i + 1}.</span>
                 {link.label}
               </motion.a>
             ))}
-            <div className={styles["mobile-socials"]}>
-              <a href={profile.github} target="_blank" rel="noreferrer" className={styles["social-icon"]}>
-                <Icon name="FiGithub" size={20} />
-              </a>
-              <a href={profile.linkedin} target="_blank" rel="noreferrer" className={styles["social-icon"]}>
-                <Icon name="FiLinkedin" size={20} />
-              </a>
-            </div>
-          </motion.nav>
+          </motion.div>
         )}
       </AnimatePresence>
-      </nav>
     </FadeIn>
   );
 };

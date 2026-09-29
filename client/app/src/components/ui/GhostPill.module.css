@@ -2,6 +2,7 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  min-height: 44px;
   gap: 0.5rem;
   border-radius: 999px;
   border: 2px solid var(--text-light);
@@ -29,8 +30,12 @@
 }
 
 .pill:focus-visible {
-  outline: 3px solid var(--text-light);
-  outline-offset: 2px;
+  outline: 2px solid var(--text-light);
+  outline-offset: 3px;
+}
+
+.pill:active {
+  transform: scale(0.98);
 }
 
 @media (max-width: 640px) {
