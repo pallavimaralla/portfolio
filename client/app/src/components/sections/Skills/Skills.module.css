@@ -1,62 +1,35 @@
 .skills-section {
+  padding: clamp(4rem, 8vw, 6rem) clamp(1.5rem, 4vw, 2.5rem);
   position: relative;
 }
 
-.skills-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.25rem;
-  margin-top: 0.5rem;
+.section-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
 }
 
-.skill-card {
-  background: var(--bg-card);
-  border: 1px solid var(--border-color);
-  border-radius: 12px;
-  padding: 1.25rem;
-  transition: box-shadow 0.3s ease, border-color 0.3s ease, background 0.3s ease;
+.marquee-wrapper {
+  margin-top: clamp(2rem, 4vw, 3rem);
 }
 
-.skill-card-cyan:hover   { background: var(--bg-card-hover); border-color: rgba(0, 212, 255, 0.28);   box-shadow: 0 4px 28px rgba(0, 0, 0, 0.5), 0 0 18px rgba(0, 212, 255, 0.07); }
-.skill-card-purple:hover { background: var(--bg-card-hover); border-color: rgba(124, 58, 237, 0.28);  box-shadow: 0 4px 28px rgba(0, 0, 0, 0.5), 0 0 18px rgba(124, 58, 237, 0.07); }
-.skill-card-green:hover  { background: var(--bg-card-hover); border-color: rgba(52, 211, 153, 0.28);   box-shadow: 0 4px 28px rgba(0, 0, 0, 0.5), 0 0 18px rgba(52, 211, 153, 0.07); }
-.skill-card-pink:hover   { background: var(--bg-card-hover); border-color: rgba(244, 114, 182, 0.28);  box-shadow: 0 4px 28px rgba(0, 0, 0, 0.5), 0 0 18px rgba(244, 114, 182, 0.07); }
+/* Responsive */
+@media (max-width: 768px) {
+  .skills-section {
+    padding: clamp(3rem, 5vw, 4rem) clamp(1.5rem, 3vw, 2rem);
+  }
 
-.skill-card-header {
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
-  margin-bottom: 1rem;
-  padding-bottom: 0.75rem;
-  border-bottom: 1px solid var(--border-color);
-}
-
-.skill-header-cyan   { color: var(--accent-cyan); }
-.skill-header-purple { color: var(--accent-purple); }
-.skill-header-green  { color: var(--accent-green); }
-.skill-header-pink   { color: var(--accent-pink); }
-
-.skill-category-label {
-  font-size: 0.78rem;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-}
-
-.skill-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.4rem;
-}
-
-@media (max-width: 900px) {
-  .skills-grid {
-    grid-template-columns: repeat(2, 1fr);
+  .marquee-wrapper {
+    margin-top: clamp(1.5rem, 3vw, 2rem);
   }
 }
 
-@media (max-width: 560px) {
-  .skills-grid {
-    grid-template-columns: 1fr;
+@media (max-width: 480px) {
+  .skills-section {
+    padding: clamp(2.5rem, 4vw, 3.5rem) 1.25rem;
+  }
+
+  .marquee-wrapper {
+    margin-top: clamp(1.25rem, 2vw, 1.5rem);
   }
 }
