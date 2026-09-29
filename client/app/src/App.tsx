@@ -18,8 +18,18 @@ function App() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const timer = setTimeout(() => setLoading(false), 2200);
-    return () => clearTimeout(timer);
+    const maxWaitTimer = setTimeout(() => setLoading(false), 600);
+
+    if (document.fonts.ready) {
+      document.fonts.ready.then(() => setLoading(false)).catch(() => {
+        clearTimeout(maxWaitTimer);
+      });
+    } else {
+      clearTimeout(maxWaitTimer);
+      setLoading(false);
+    }
+
+    return () => clearTimeout(maxWaitTimer);
   }, []);
 
   if (loading) return <Loader />;
