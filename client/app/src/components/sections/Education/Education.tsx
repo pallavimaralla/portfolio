@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { SectionHeader, Icon, Tag } from '../../ui';
+import { SectionHeader, Icon, Tag, FadeIn } from '../../ui';
 import { sections } from '../../../data/sections';
 import { degrees } from '../../../data/education';
 import styles from './Education.module.css';
@@ -9,10 +9,12 @@ const eduSection = sections.find(s => s.id === 'education')!;
 
 const Education: React.FC = () => (
   <section id="education" className={styles["education-section"]}>
-    <div className="section-container">
-      <SectionHeader num={eduSection.number} label={eduSection.label} title={eduSection.title} />
+    <div className={styles["section-container"]}>
+      <FadeIn as="div" delay={0} y={20} duration={0.7}>
+        <SectionHeader num={eduSection.number} label={eduSection.label} title={eduSection.title} />
+      </FadeIn>
 
-      <div className={styles["edu-list"]}>
+      <FadeIn as="div" className={styles["edu-list"]} delay={0.15} y={20} duration={0.7}>
         {degrees.map((d, i) => (
           <motion.div
             key={d.degree}
@@ -62,7 +64,7 @@ const Education: React.FC = () => (
             )}
           </motion.div>
         ))}
-      </div>
+      </FadeIn>
     </div>
   </section>
 );
