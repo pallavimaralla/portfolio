@@ -150,17 +150,17 @@
 }
 
 .form-label {
-  font-family: 'Fira Code', monospace;
+  font-family: 'Kanit', sans-serif;
   font-size: clamp(0.65rem, 0.9vw, 0.75rem);
   font-weight: 600;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.05em;
   text-transform: uppercase;
-  color: rgba(215, 226, 234, 0.5);
+  color: rgba(215, 226, 234, 0.7);
 }
 
 .form-input {
   background: rgba(215, 226, 234, 0.02);
-  border: 1px solid rgba(215, 226, 234, 0.1);
+  border: 1px solid rgba(215, 226, 234, 0.3);
   border-radius: 6px;
   padding: clamp(0.65rem, 1.2vw, 0.75rem) 1rem;
   color: #D7E2EA;

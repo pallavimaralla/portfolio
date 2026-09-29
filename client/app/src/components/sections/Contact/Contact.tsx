@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Icon, FadeIn } from '../../ui';
+import { Icon, FadeIn, ContactButton } from '../../ui';
 import { profile } from '../../../data/profile';
 import { useContactForm } from '../../../hooks';
 import styles from './Contact.module.css';
@@ -137,18 +137,40 @@ const Contact: React.FC = () => {
 
             <button
               type="submit"
-              className={`btn-primary contact-submit ${!isValid ? 'btn-disabled' : ''}`}
+              className={styles["contact-submit"]}
               disabled={!isValid || status === 'sending'}
+              style={{
+                background: 'var(--gradient-cta)',
+                color: 'var(--surface-light)',
+                border: '2px solid var(--surface-light)',
+                borderRadius: '999px',
+                padding: 'clamp(0.75rem, 1.5vw, 1rem) clamp(2rem, 3vw, 3rem)',
+                fontFamily: "'Kanit', sans-serif",
+                fontWeight: '500',
+                fontSize: 'clamp(0.75rem, 1vw, 1rem)',
+                textTransform: 'uppercase',
+                letterSpacing: '0.1em',
+                cursor: !isValid || status === 'sending' ? 'not-allowed' : 'pointer',
+                opacity: !isValid || status === 'sending' ? '0.5' : '1',
+                transition: 'all 0.3s ease',
+                boxShadow: '0px 4px 4px rgba(181, 1, 167, 0.25), 4px 4px 12px #7721b1 inset',
+                minHeight: '44px',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                gap: '0.5rem',
+                width: '100%',
+              }}
             >
               {status === 'sending' ? (
-                <span className={styles["sending-spinner"]} />
+                <>
+                  <span className={styles["sending-spinner"]} />
+                  Sending...
+                </>
               ) : status === 'sent' ? (
                 '✓ Message Sent!'
               ) : (
-                <>
-                  <Icon name="FiSend" size={15} />
-                  Send Message
-                </>
+                'Send Message'
               )}
             </button>
           </motion.form>
